@@ -1,0 +1,306 @@
+html,
+body {
+  font-family: "Mulish-Regular", sans-serif;
+  background-color: #fff;
+  color: #000;
+  min-height: 100vh;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.main {
+  flex-grow: 1;
+  /* padding-top: 151px; */
+}
+
+.container {
+  max-width: 1240px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.container-popup {
+  max-width: max-content;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.container-wide {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: "Raleway-SemiBold", sans-serif;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 75px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.secondary-title {
+  font-family: "Raleway-SemiBold", sans-serif;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 56px;
+  color: #000000;
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.swiper.swiper-products {
+  overflow: visible;
+}
+
+.not-empty {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  width: 10px;
+  height: 10px;
+  background-color: #ED0000;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.margin-none {
+  margin: 0 !important;
+}
+
+@font-face {
+  font-family: "Mulish-Light", sans-serif;
+  src: url("../../app/fonts/Mulish-Light.eot") format("eot"),
+    url("../../app/fonts/Mulish-Light.otf") format("otf"),
+    url("../../app/fonts/Mulish-Light.woff2") format("woff2"),
+    url("../../app/fonts/Mulish-Light.woff") format("woff"),
+    url("../../app/fonts/Mulish-Light.ttf") format("ttf");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish-Regular", sans-serif;
+  src: url("../../app/fonts/Mulish-Regular.eot") format("eot"),
+    url("../../app/fonts/Mulish-Regular.otf") format("otf"),
+    url("../../app/fonts/Mulish-Regular.woff2") format("woff2"),
+    url("../../app/fonts/Mulish-Regular.woff") format("woff"),
+    url("../../app/fonts/Mulish-Regular.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway-SemiBold", sans-serif;
+  src: url("../../app/fonts/Raleway-SemiBold.eot") format("eot"),
+    url("../../app/fonts/Raleway-SemiBold.otf") format("otf"),
+    url("../../app/fonts/Raleway-SemiBold.woff2") format("woff2"),
+    url("../../app/fonts/Raleway-SemiBold.woff") format("woff"),
+    url("../../app/fonts/Raleway-SemiBold.ttf") format("ttf");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+.auth-overlay {
+  background: #00000066;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: -1;
+}
+
+.auth-overlay.overlay-active {
+  opacity: 0.6;
+  visibility: visible;
+}
+
+.auth-overlay.overlay-active {
+  z-index: 100;
+}
+
+.slick-prev {
+  left: 0px !important;
+}
+
+.slick-next {
+  right: 0px !important;
+}
+
+.slick-prev,
+.slick-next {
+  top: unset !important;
+  bottom: 4% !important;
+  width: 33px !important;
+  height: 72px !important;
+  border-radius: 10px;
+  backdrop-filter: blur(46px);
+  transform: unset !important;
+  transition: all 250ms ease-in-out;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  content: "" !important;
+  position: absolute;
+  top: 24px;
+  left: 5px;
+  display: block;
+  width: 24px !important;
+  height: 24px !important;
+  opacity: 1 !important;
+  color: white;
+}
+
+.slick-prev:before {
+  background-image: url("/img/product/slide-prev.svg") !important;
+}
+
+.slick-next:before {
+  background-image: url("/img/product/slide-next.svg") !important;
+}
+
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus {
+  backdrop-filter: blur(96px);
+}
+
+@media (max-width: 1000px) {
+  .slick-prev,
+  .slick-next {
+    bottom: 2% !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .slick-prev,
+  .slick-next {
+    bottom: 11% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .slick-prev,
+  .slick-next {
+    bottom: 9% !important;
+  }
+}
+
+@media (max-width: 680px) {
+  .slick-prev,
+  .slick-next {
+    bottom: 7% !important;
+  }
+}
+
+@media (max-width: 550px) {
+  .slick-prev,
+  .slick-next {
+    bottom: 5% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .slick-prev,
+  .slick-next {
+    bottom: 3% !important;
+  }
+}
+
+@media (max-width: 410px) {
+  .slick-prev,
+  .slick-next {
+    bottom: 1% !important;
+  }
+}
+
+@media (max-width: 410px) {
+  .slick-prev,
+  .slick-next {
+    bottom: 0.2% !important;
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  top: 50% !important;
+  transform: translateY(-50%);
+  width: 48px !important;
+  height: 120px !important;
+  z-index: 10;
+  cursor: pointer;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 10px;
+  backdrop-filter: blur(46px);
+  background: #ffffff80;
+}
+
+.swiper-button-prev {
+  left: 40px !important;
+}
+.swiper-button-next {
+  right: 40px !important;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  content: "" !important;
+  width: 10px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.swiper-button-prev:after {
+  background-image: url("/img/main-page/hero/btn-prev.svg") !important;
+}
+
+.swiper-button-next:after {
+  background-image: url("/img/main-page/hero/btn-next.svg") !important;
+}
+
+@media (max-width: 1000px) {
+  .swiper-button-prev {
+    left: 20px !important;
+  }
+  .swiper-button-next {
+    right: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 34px !important;
+    height: 84px !important;
+  }
+
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    width: 7px;
+    height: 14px;
+  }
+}

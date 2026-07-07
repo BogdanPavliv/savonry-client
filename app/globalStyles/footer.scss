@@ -1,0 +1,124 @@
+.footer {
+    padding: 97px 0 32px;
+    background-color: #000000;
+    color: #FFFFFF;
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        gap: 72px;
+        margin-bottom: 53px;
+    }
+
+    &__top_left {
+        max-width: 284px;
+    }
+
+    &__text {
+        font-family: "Mulish-Light", sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 26px;
+        color: #808080;
+    }
+
+    .logo_footer__img {
+        margin-bottom: 39px;
+    }
+
+    &__top_right {
+        max-width: 678px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: 73px;
+    }
+
+    &__nav_list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px 56px;
+    }
+
+    &__title {
+        font-family: "Mulish-Regular", sans-serif;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 30px;
+        color: #FFFFFF;
+        margin-bottom: 40px;
+    }
+
+    &__nav_link {
+        font-family: "Mulish-Light", sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 24px;
+        color: #fff;
+        transition: all 25ms ease-in;
+        white-space: nowrap;
+        
+        &:hover {
+            color: #ffffffe0;
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 32px;
+    }
+
+    &__copyright {
+        font-family: "Mulish-Light", sans-serif;
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 15px;
+        color: #817E79;
+    }
+
+    &__payment_img_wrapper {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .footer {
+        padding-top: 56px;
+    }
+
+    .footer__top {
+        margin-bottom: 48px;
+    }
+
+    .footer .logo_footer__img {
+        margin-bottom: 27px;
+    }
+}
+
+@media (max-width: 991px) {
+    .footer__top {
+        flex-direction: column;
+        gap: 56px;
+    }
+
+    .footer__top_left {
+        max-width: 397px;
+    }
+}
+
+@media (max-width: 720px) {
+    .footer__top_right {
+        max-width: 347px;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .footer__bottom {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+}

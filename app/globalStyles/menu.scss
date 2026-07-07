@@ -1,0 +1,226 @@
+.mobile_menu {
+    z-index: 2;
+    position: fixed;
+    //   top: -100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: #fff;
+
+    &__inner {
+        position: relative;
+        height: 100%;
+    }
+
+    &__top {
+        padding: 20px 0 27px 0;
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__top::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #D2D2D2;
+    }
+
+    &__top__actions_list {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        width: max-content;
+        position: absolute;
+        top: 34px;
+        left: 24px;
+    }
+
+    &__top__actions_link {
+        display: block;
+        width: 32px;
+        height: 32px;
+        position: relative;
+    }
+
+    &__top__actions_link:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #181818;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    &__top__actions_link_search:before {
+        -webkit-mask: url("/img/icons/search.svg") no-repeat 50% 50%;
+        mask: url("/img/icons/search.svg") no-repeat 50% 50%;
+    }
+
+    &__top__actions_link_phone:before {
+        -webkit-mask: url("/img/icons/phone.svg") no-repeat 50% 50%;
+        mask: url("/img/icons/phone.svg") no-repeat 50% 50%;
+    }
+
+    &__top_actions_item:hover .mobile_menu__top_actions_link:before {
+        transition: background-color 0.2s ease-in-out;
+        background-color: #817E79;
+
+    }
+
+    &__bottom {
+        display: flex;
+        height: 100%;
+    }
+
+    &__left {
+        max-width: 264px;
+        width: 100%;
+        position: relative;
+    }
+
+    &__left::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1px;
+        height: 100%;
+        background-color: #D2D2D2;
+    }
+
+    &__list,
+    &__right_list {
+        height: 100%;
+    }
+
+    &__list {
+        width: max-content;
+        margin: 0 auto;
+        padding: 40px 0;
+    }
+
+    &__item {
+        margin-bottom: 23px;
+    }
+
+    &__item:last-child {
+        margin-bottom: 0;
+    }
+
+    &__btn {
+        font-family: "Mulish-Regular", sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        color: #000;
+        text-transform: uppercase;
+        transition: color 250ms ease-in-out;
+    }
+
+    &__btn:hover {
+        color: #817E79;
+    }
+
+    &__right {
+        flex: 1;
+    }
+
+    &__right_list {
+        width: max-content;
+        margin: 0 auto;
+        padding: 40px 0;
+    }
+
+    &__right_item {
+        margin-bottom: 16px;
+    }
+
+    &__right_item:last-child {
+        margin-bottom: 0;
+    }
+
+    &__right_link {
+        font-family: "Mulish-Light", sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+        color: #000;
+    }
+
+    &__close {
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        z-index: 1;
+    }
+
+    &__close::before {
+        background-color: #817E79;
+        content: '';
+        height: 100%;
+        width: 100%;
+        left: 3px;
+        position: absolute;
+        top: 0;
+        -webkit-mask: url("/img/icons/close.svg") no-repeat 50% 50%;
+        mask: url("/img/icons/close.svg") no-repeat 50% 50%;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    &__close:hover::before {
+        transition: background-color 0.2s ease-in-out;
+        background-color: #000000;
+    }
+}
+
+.open {
+    display: block;
+}
+
+.close {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .mobile_menu__top {
+        padding: 14px 0 17px 0;
+        position: relative;
+    }
+
+    .mobile_menu__left {
+        max-width: 100%;
+    }
+
+    .mobile_menu__list {
+        width: auto;
+        margin: 0;
+        padding: 40px 0;
+    }
+
+    .mobile_menu__bottom {
+        padding: 0 80px 0 80px;
+    }
+
+    .mobile_menu__left::before {
+        display: none;
+    }
+
+    .mobile_menu__right_list {
+        width: auto;
+        margin: 0;
+        padding: 20px 0;
+    }
+}

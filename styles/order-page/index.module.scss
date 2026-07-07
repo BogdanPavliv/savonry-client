@@ -1,0 +1,213 @@
+.order {
+  padding: 40px 0;
+
+  /* Success block */
+  &__success {
+    text-align: center;
+    margin-bottom: 56px;
+    animation: fadeIn 0.6s ease forwards;
+  }
+
+  &__success_icon {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    border: 3px solid #2ecc71;
+    font-size: 48px;
+    color: #2ecc71;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: scaleIn 0.5s ease forwards;
+  }
+
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.6);
+      opacity: 0;
+    }
+
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  &__title {
+    font-family: "Raleway-SemiBold", sans-serif;
+    font-weight: 600;
+    font-size: 42px;
+    color: #000;
+    margin-bottom: 12px;
+  }
+
+  &__subtitle {
+    font-family: "Mulish-Light", sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    color: #666;
+  }
+
+  /* Info card */
+  &__info {
+    border: 1px solid #d2d2d2;
+    padding: 32px;
+    border-radius: 16px;
+    margin-bottom: 48px;
+  }
+
+  &__info_title {
+    font-family: "Raleway-SemiBold", sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+
+  &__info_grid {
+    display: grid;
+    gap: 16px;
+  }
+
+  &__info_row {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Mulish-Light", sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+
+    strong {
+      font-family: "Mulish-Regular", sans-serif;
+      font-weight: 400;
+      color: #000;
+    }
+  }
+
+  /* Products */
+  &__products {
+    margin-bottom: 48px;
+  }
+
+  &__products_title {
+    font-family: "Raleway-SemiBold", sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+
+  &__product {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid #d2d2d2;
+  }
+
+  &__product_img {
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  &__product_info {
+    flex: 1;
+  }
+
+  &__product_name {
+    font-family: "Mulish-Regular", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 4px;
+  }
+
+  &__product_price {
+    font-family: "Mulish-Light", sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: #666;
+  }
+
+  &__product_total {
+    font-family: "Raleway-SemiBold", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 16px;
+    font-size: 22px;
+    font-family: "Mulish-Regular", sans-serif;
+    font-weight: 400;
+  }
+
+  /* Info note */
+  &__note {
+    padding: 16px 20px;
+    border-radius: 12px;
+    background: #f6f6f6;
+    color: #444;
+    font-family: "Mulish-Light", sans-serif;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 40px;
+  }
+
+  &__note_icon {
+    font-size: 20px;
+  }
+
+  /* Button */
+  &__home_btn {
+    max-width: 260px;
+    width: 100%;
+    height: 56px;
+    border-radius: 12px;
+    background: #000;
+    color: #fff;
+    font-family: "Mulish-Regular", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    transition: 0.3s;
+  }
+
+  &__home_btn:hover {
+    background: #333;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .order__title {
+    font-size: 32px;
+  }
+
+  .order__info {
+    padding: 24px;
+  }
+
+  .order__products_title {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 440px) {
+  .order__info_row {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

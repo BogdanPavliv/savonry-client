@@ -1,0 +1,48 @@
+.wholesalers {
+    padding: 40px 0 60px 0;
+
+    &__title {
+        font-family: "Raleway-SemiBold", sans-serif;
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 56px;
+        color: #000000;
+        margin-bottom: 64px;
+    }
+
+    &__text {
+        font-family: "Mulish-Light", sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 16px;
+    }
+
+    &__link {
+        font-family: "Mulish-Regular", sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 26px;
+        color: #FDBE87;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .wholesalers {
+        padding: 32px 0 24px 0;
+    }
+
+    .wholesalers__title {
+        font-size: 32px;
+        line-height: 38px;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 360px) {
+
+    .wholesalers__title {
+        margin-bottom: 32px;
+    }
+}

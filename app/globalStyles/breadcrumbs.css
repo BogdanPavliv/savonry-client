@@ -1,0 +1,38 @@
+.breadcrumbs {
+  padding: 40px 0 16px 0;
+}
+
+.breadcrumbs__list {
+  display: flex;
+  align-items: center;
+  min-width: max-content;
+}
+
+.breadcrumbs__item:not(:last-child) {
+  margin-right: 16px;
+}
+
+.breadcrumbs__link {
+  font-family: "Mulish-Light", sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 15px;
+  color: #817e79;
+  position: relative;
+}
+
+.breadcrumbs__link::before {
+  content: "/";
+  position: absolute;
+  top: 1px;
+  right: -8px;
+}
+
+.last-crumb {
+  color: #000000;
+  cursor: auto;
+}
+
+.last-crumb::before {
+  content: none;
+}
