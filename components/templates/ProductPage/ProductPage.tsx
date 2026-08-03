@@ -71,14 +71,22 @@ const ProductPage = ({ productId, category }: IProductPageProps) => {
     if (selectedProduct?.name) {
       // Зберігаємо в глобальний об'єкт для доступу з layout
       if (typeof window !== "undefined") {
-        (window as any).__currentProductName = selectedProduct.name;
+        const windowWithProductName = window as Window & {
+          __currentProductName?: string;
+        };
+
+        windowWithProductName.__currentProductName = selectedProduct.name;
         // Тригеримо подію для оновлення breadcrumbs
         window.dispatchEvent(new CustomEvent("productNameUpdate"));
       }
     }
     return () => {
       if (typeof window !== "undefined") {
-        delete (window as any).__currentProductName;
+        const windowWithProductName = window as Window & {
+          __currentProductName?: string;
+        };
+
+        delete windowWithProductName.__currentProductName;
         window.dispatchEvent(new CustomEvent("productNameUpdate"));
       }
     };

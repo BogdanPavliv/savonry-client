@@ -79,7 +79,7 @@ const DeliveryPage = () => {
                 <div
                   className={styles.delivery__payment_and_delivery_item__title}
                 >
-                  1. Кур'єрськими службами Новою поштою
+                  1. Кур&apos;єрськими службами Новою поштою
                 </div>
                 <p className={styles.delivery__text}>
                   При замовленні від 2500 гривень кур&apos;єрська доставка

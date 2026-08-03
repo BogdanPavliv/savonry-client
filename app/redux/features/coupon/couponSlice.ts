@@ -1,6 +1,7 @@
 "use client";
 
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { AxiosError } from "axios";
 import axios from "@/lib/utils/axios";
 
 interface CouponState {
@@ -38,9 +39,11 @@ export const validateCoupon = createAsyncThunk<
       discount: Number(res.data.discount || 0),
       code,
     };
-  } catch (err: any) {
+  } catch (error: unknown) {
+    const axiosError = error as AxiosError<{ message?: string }>;
+
     return rejectWithValue(
-      err.response?.data?.message || "Помилка перевірки купона"
+      axiosError.response?.data?.message || "Помилка перевірки купона"
     );
   }
 });

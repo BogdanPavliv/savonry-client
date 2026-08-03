@@ -74,7 +74,7 @@ const ProductPageContent = ({
           </div>
           <h1 className={styles.product__name}>{product.name}</h1>
           <div className={styles.product__volume}>
-            Об'єм: {product.volume} г
+            Об&apos;єм: {product.volume} г
           </div>
           <div className={styles.product__description_sm}>
             {product.description}

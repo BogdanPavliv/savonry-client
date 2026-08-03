@@ -111,7 +111,7 @@ const SearchModal = () => {
 
           {!isLoading && searchQuery.trim().length > 2 && searchResults.length === 0 && (
             <div className="search-modal__empty">
-              Нічого не знайдено за запитом "{searchQuery}"
+              Нічого не знайдено за запитом &quot;{searchQuery}&quot;
             </div>
           )}
 
