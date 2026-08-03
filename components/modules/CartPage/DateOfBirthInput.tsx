@@ -1,5 +1,4 @@
 import { IAuthInput } from "@/types/authPopup";
-import { surnameValidationRules } from "@/lib/utils/auth";
 import styles from "@/styles/cart-page/index.module.scss";
 
 const DateOfBirthInput = ({ register, errors, dateOfBirth, setDateOfBirth,}: IAuthInput) => {
@@ -20,7 +19,9 @@ const DateOfBirthInput = ({ register, errors, dateOfBirth, setDateOfBirth,}: IAu
           minLength: 10,
           maxLength: 10,
           onChange: (e) => {
-            setDateOfBirth && setDateOfBirth(e.target.value);
+            if (setDateOfBirth) {
+              setDateOfBirth(e.target.value);
+            }
           },
         })}
       />

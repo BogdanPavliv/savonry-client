@@ -125,7 +125,7 @@ const SearchModal = () => {
                 >
                   <div className="search-modal__item-image">
                     <img
-                      src={`http://localhost:3002${product.images[0] || "/img/placeholder.jpg"}`}
+                      src={`https://savonry-server-app-gki2.onrender.com${product.images[0] || "/img/placeholder.jpg"}`}
                       alt={product.name}
                     />
                   </div>

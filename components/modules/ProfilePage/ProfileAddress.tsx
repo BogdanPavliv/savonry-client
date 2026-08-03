@@ -19,7 +19,9 @@ const ProfileAddress = ({ register, errors, address, setAddress }: IAuthInput) =
           minLength: 4,
           maxLength: 40,
           onChange: (e) => {
-            setAddress && setAddress(e.target.value);
+            if (setAddress) {
+              setAddress(e.target.value);
+            }
           },
         })}
       />

@@ -19,7 +19,9 @@ const CityInput = ({ register, errors, city, setCity }: IAuthInput) => {
           minLength: 4,
           maxLength: 40,
           onChange: (e) => {
-            setCity && setCity(e.target.value);
+            if (setCity) {
+              setCity(e.target.value);
+            }
           },
         })}
       />

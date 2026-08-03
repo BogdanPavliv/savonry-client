@@ -2,6 +2,7 @@
 "use client";
 
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { AxiosError } from "axios";
 import axios from "../../../../lib/utils/axios";
 
 interface CartItem {
@@ -20,6 +21,20 @@ interface CartState {
   error: string | null;
 }
 
+interface CartErrorResponse {
+  message?: string;
+}
+
+const getCartErrorMessage = (error: unknown, fallback: string): string => {
+  const axiosError = error as AxiosError<CartErrorResponse>;
+
+  if (axiosError.response?.data?.message) {
+    return axiosError.response.data.message;
+  }
+
+  return fallback;
+};
+
 const initialState: CartState = {
   items: [],
   loading: false,
@@ -33,8 +48,10 @@ export const fetchCart = createAsyncThunk<CartItem[], void, { rejectValue: strin
     try {
       const res = await axios.get("/cart", { withCredentials: true });
       return res.data.items;
-    } catch (err: any) {
-      return rejectWithValue(err.response?.data?.message || "Помилка при отриманні кошика");
+    } catch (error: unknown) {
+      return rejectWithValue(
+        getCartErrorMessage(error, "Помилка при отриманні кошика")
+      );
     }
   }
 );
@@ -46,8 +63,10 @@ export const addToCart = createAsyncThunk<CartItem[], { productId: string; quant
     try {
       const res = await axios.post("/cart/add", product, { withCredentials: true });
       return res.data.items;
-    } catch (err: any) {
-      return rejectWithValue(err.response?.data?.message || "Помилка при додаванні в кошик");
+    } catch (error: unknown) {
+      return rejectWithValue(
+        getCartErrorMessage(error, "Помилка при додаванні в кошик")
+      );
     }
   }
 );
@@ -63,8 +82,10 @@ export const removeFromCart = createAsyncThunk<CartItem[], string, { rejectValue
         { withCredentials: true }
       );
       return res.data.items;
-    } catch (err: any) {
-      return rejectWithValue(err.response?.data?.message || "Помилка при видаленні товару");
+    } catch (error: unknown) {
+      return rejectWithValue(
+        getCartErrorMessage(error, "Помилка при видаленні товару")
+      );
     }
   }
 );

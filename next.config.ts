@@ -8,13 +8,13 @@ const nextConfig: NextConfig = {
       {
         protocol: "http",
         hostname: "localhost",
-        port: "3002",
+        port: "https://savonry-server-app-gki2.onrender.com",
         pathname: "/uploads/**",
       },
       {
         protocol: "http",
         hostname: "localhost",
-        port: "3002",
+        port: "https://savonry-server-app-gki2.onrender.com",
         pathname: "/uploads/avatars/**",
       },
     ],

@@ -9,7 +9,7 @@ import {
   fetchProductById,
 } from "@/app/redux/features/products/productsSlice";
 import { addToCart } from "@/app/redux/features/cart/cartSlice";
-import { IProductPageProps, ProductType, CartItem, UserType } from "@/types/product";
+import { IProductPageProps, ProductType, CartItem } from "@/types/product";
 import { usePageTitle } from "@/hooks/usePageTitle";
 import ProductPageContent from "@/components/modules/ProductPage/ProductPageContent";
 import styles from "@/styles/product/index.module.scss";
@@ -20,9 +20,7 @@ const ProductPage = ({ productId, category }: IProductPageProps) => {
     (state: RootState) => state.products
   );
 
-  const { user } = useSelector(
-    (state: RootState) => state.auth as { user: any }
-  );
+  const { user } = useSelector((state: RootState) => state.auth);
 
   const [quantity, setQuantity] = useState<number>(1);
 
@@ -36,7 +34,7 @@ const ProductPage = ({ productId, category }: IProductPageProps) => {
         setQuantity(existingProduct.quantity);
       }
     }
-  }, [user?.cart, productId]);
+  }, [user, productId]);
 
   // 🔹 Отримуємо продукт
   useEffect(() => {

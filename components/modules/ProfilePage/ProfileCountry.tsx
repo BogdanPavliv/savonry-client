@@ -24,7 +24,9 @@ const ProfileCountry = ({
           minLength: 4,
           maxLength: 40,
           onChange: (e) => {
-            setCountry && setCountry(e.target.value);
+            if (setCountry) {
+              setCountry(e.target.value);
+            }
           },
         })}
       />

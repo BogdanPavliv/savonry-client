@@ -24,7 +24,9 @@ const RepeatNewProfilePassword = ({
           minLength: 4,
           maxLength: 40,
           onChange: (e) => {
-            setRepeatNewPassword && setRepeatNewPassword(e.target.value);
+            if (setRepeatNewPassword) {
+              setRepeatNewPassword(e.target.value);
+            }
           },
         })}
       />

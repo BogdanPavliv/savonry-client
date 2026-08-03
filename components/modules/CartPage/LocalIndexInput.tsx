@@ -19,7 +19,9 @@ const LocalIndexInput = ({ register, errors, localIndex, setLocalIndex }: IAuthI
           minLength: 4,
           maxLength: 40,
           onChange: (e) => {
-            setLocalIndex && setLocalIndex(e.target.value);
+            if (setLocalIndex) {
+              setLocalIndex(e.target.value);
+            }
           },
         })}
       />

@@ -18,7 +18,9 @@ const ProfileEmail = ({ register, errors, email, setEmail }: IAuthInput) => {
         {...register("email", {
           ...emailValidationRules("Неправильний Email!", "Введіть email!"),
           onChange: (e) => {
-            setEmail && setEmail(e.target.value);
+            if (setEmail) {
+              setEmail(e.target.value);
+            }
           },
         })}
       />

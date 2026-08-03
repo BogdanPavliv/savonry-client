@@ -1,5 +1,4 @@
 import { IAuthInput } from "@/types/authPopup";
-import { surnameValidationRules } from "@/lib/utils/auth";
 import styles from "@/styles/cart-page/index.module.scss";
 
 const SurnameInput = ({
@@ -24,7 +23,9 @@ const SurnameInput = ({
           minLength: 2,
           maxLength: 15,
           onChange: (e) => {
-            setSurname && setSurname(e.target.value);
+            if (setSurname) {
+              setSurname(e.target.value);
+            }
           },
         })}
       />

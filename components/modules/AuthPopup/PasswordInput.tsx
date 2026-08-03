@@ -23,7 +23,9 @@ const PasswordInput = ({
           minLength: 4,
           maxLength: 40,
           onChange: (e) => {
-            setPassword && setPassword(e.target.value);
+            if (setPassword) {
+              setPassword(e.target.value);
+            }
           },
         })}
       />

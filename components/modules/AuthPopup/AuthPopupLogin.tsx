@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { AuthPopupClose } from "@/app/redux/authPopupSlice";
 import { useAuthForm } from "@/hooks/useAuthForm";
 import EmailInput from "./EmailInput";

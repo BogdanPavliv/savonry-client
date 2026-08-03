@@ -202,7 +202,7 @@ const CartPage = () => {
                         <Image
                           src={
                             item.productId.images?.[0]
-                              ? `http://localhost:3002${item.productId.images[0]}`
+                              ? `https://savonry-server-app-gki2.onrender.com${item.productId.images[0]}`
                               : "/no-image.png"
                           }
                           className={styles.cart__image}
@@ -491,7 +491,13 @@ const CartPage = () => {
                                   id={method}
                                   checked={deliveryMethod === method}
                                   onChange={() =>
-                                    setDeliveryMethod(method as any)
+                                    setDeliveryMethod(
+                                      method as
+                                        | "Кур'єром по Києву"
+                                        | "CDEK До пункту видачі"
+                                        | "Нова Пошта"
+                                        | "Укрпошта"
+                                    )
                                   }
                                 />
                                 <span
