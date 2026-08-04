@@ -28,29 +28,25 @@ const SearchModal = () => {
     }
   }, [openSearchPopup]);
 
-  const handleSearch = async () => {
-    try {
-      setIsLoading(true);
-      const { data } = await axios.get(`/products/search?q=${searchQuery}`);
-      setSearchResults(data);
-    } catch (error) {
-      console.error("Помилка пошуку:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   useEffect(() => {
-    const delaySearch = setTimeout(() => {
+    const delaySearch = setTimeout(async () => {
       if (searchQuery.trim().length > 2) {
-        handleSearch();
+        try {
+          setIsLoading(true);
+          const { data } = await axios.get(`/products/search?q=${searchQuery}`);
+          setSearchResults(data);
+        } catch (error) {
+          console.error("Помилка пошуку:", error);
+        } finally {
+          setIsLoading(false);
+        }
       } else {
         setSearchResults([]);
       }
     }, 300);
 
     return () => clearTimeout(delaySearch);
-  }, [searchQuery, handleSearch]);
+  }, [searchQuery]);
 
   const handleProductClick = (category: string, productId: string) => {
     router.push(`/catalog/${category}/${productId}`);
@@ -114,7 +110,7 @@ const SearchModal = () => {
             searchQuery.trim().length > 2 &&
             searchResults.length === 0 && (
               <div className="search-modal__empty">
-                Нічого не знайдено за запитом "{searchQuery}"
+                Нічого не знайдено за запитом &quot;{searchQuery}&quot;
               </div>
             )}
 
