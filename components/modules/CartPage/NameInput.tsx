@@ -1,5 +1,4 @@
 import { IAuthInput } from "@/types/authPopup";
-import { nameValidationRules } from "@/lib/utils/auth";
 import styles from "@/styles/cart-page/index.module.scss";
 
 const NameInput = ({ register, errors, username, setUsername }: IAuthInput) => {
@@ -19,7 +18,9 @@ const NameInput = ({ register, errors, username, setUsername }: IAuthInput) => {
           minLength: 2,
           maxLength: 15,
           onChange: (e) => {
-            setUsername && setUsername(e.target.value);
+            if (setUsername) {
+              setUsername(e.target.value);
+            }
           },
         })}
       />

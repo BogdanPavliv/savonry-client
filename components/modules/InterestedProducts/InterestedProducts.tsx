@@ -1,8 +1,6 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/app/redux/store";
@@ -69,7 +67,7 @@ const InterestedProducts = () => {
                         className={styles.interested__link}
                       >
                         <img
-                          src={`http://localhost:3002${
+                          src={`https://savonry-server-app-gki2.onrender.com${
                             item.images?.[0] || "/no-image.png"
                           }`}
                           alt={item.name}

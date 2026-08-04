@@ -8,7 +8,7 @@ const ProfileAvatar = ({ avatar }: { avatar: string | undefined }) => {
   // 🔁 ОНОВЛЕННЯ preview, коли avatar змінюється (наприклад, після логіну)
   useEffect(() => {
     if (avatar) {
-      setPreview(`http://localhost:3002/${avatar}`);
+      setPreview(`https://savonry-server-app-gki2.onrender.com/${avatar}`);
     }
   }, [avatar]);
 
@@ -31,7 +31,7 @@ const ProfileAvatar = ({ avatar }: { avatar: string | undefined }) => {
       });
 
       // Оновлення preview після відповіді бекенду (якщо потрібно)
-      setPreview(`http://localhost:3002${data.avatar}`);
+      setPreview(`https://savonry-server-app-gki2.onrender.com${data.avatar}`);
     } catch (error) {
       console.error("Помилка при завантаженні аватара", error);
     }

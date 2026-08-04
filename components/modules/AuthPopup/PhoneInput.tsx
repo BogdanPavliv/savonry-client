@@ -19,7 +19,9 @@ const PhoneInput = ({ register, errors, phone, setPhone }: IAuthInput) => {
           {
             ...phoneValidationRules("Неправильний формат телефону!", "Введіть телефон!"),
             onChange: (e) => {
-              setPhone && setPhone(e.target.value);
+              if (setPhone) {
+                setPhone(e.target.value);
+              }
             }
           }
         )}

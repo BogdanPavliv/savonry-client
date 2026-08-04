@@ -18,7 +18,7 @@ import { ProductsPageProps } from "@/types/others";
 
 const ProductsPage = ({ pageName, fetchAction, extraParams }: ProductsPageProps) => {
   const dispatch = useDispatch<AppDispatch>();
-  const { products, loading, error, currentPage, pagesCount, paginationProps } =
+  const { products, loading, error, currentPage, paginationProps } =
     useProductsPagination(pageName, fetchAction, extraParams);
 
   const [showSkeleton, setShowSkeleton] = useState(true);
@@ -74,7 +74,7 @@ const ProductsPage = ({ pageName, fetchAction, extraParams }: ProductsPageProps)
                   >
                     <Image
                       className={styles.catalog__image}
-                      src={`http://localhost:3002${
+                      src={`https://savonry-server-app-gki2.onrender.com${
                         product.images?.[0] || "/no-image.png"
                       }`}
                       alt={product.name}

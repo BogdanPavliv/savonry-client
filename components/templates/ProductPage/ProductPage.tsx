@@ -20,23 +20,21 @@ const ProductPage = ({ productId, category }: IProductPageProps) => {
     (state: RootState) => state.products
   );
 
-  const { user } = useSelector(
-    (state: RootState) => state.auth as { user: any }
-  );
+  const { user } = useSelector((state: RootState) => state.auth);
 
   const [quantity, setQuantity] = useState<number>(1);
 
   // 🔹 Оновлюємо кількість у кошику, якщо є такий товар
   useEffect(() => {
     if (user?.cart && productId) {
-      const existingProduct: CartItem | undefined = (
-        user as UserType
-      ).cart.find((item: CartItem) => item.productId === productId);
+      const existingProduct: CartItem | undefined = user.cart.find(
+        (item: CartItem) => item.productId === productId
+      );
       if (existingProduct) {
         setQuantity(existingProduct.quantity);
       }
     }
-  }, [user?.cart, productId]);
+  }, [user, user?.cart, productId]);
 
   // 🔹 Отримуємо продукт
   useEffect(() => {
@@ -68,14 +66,20 @@ const ProductPage = ({ productId, category }: IProductPageProps) => {
     if (selectedProduct?.name) {
       // Зберігаємо в глобальний об'єкт для доступу з layout
       if (typeof window !== "undefined") {
-        (window as any).__currentProductName = selectedProduct.name;
+        const currentWindow = window as Window & {
+          __currentProductName?: string;
+        };
+        currentWindow.__currentProductName = selectedProduct.name;
         // Тригеримо подію для оновлення breadcrumbs
         window.dispatchEvent(new CustomEvent("productNameUpdate"));
       }
     }
     return () => {
       if (typeof window !== "undefined") {
-        delete (window as any).__currentProductName;
+        const currentWindow = window as Window & {
+          __currentProductName?: string;
+        };
+        delete currentWindow.__currentProductName;
         window.dispatchEvent(new CustomEvent("productNameUpdate"));
       }
     };

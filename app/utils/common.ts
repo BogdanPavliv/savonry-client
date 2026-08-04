@@ -1,5 +1,3 @@
-import { lookup } from "dns";
-
 export const sliderHeroSettings = {
   slidesPerView: 1,
   spaceBetween: 2,

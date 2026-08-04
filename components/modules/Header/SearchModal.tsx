@@ -6,6 +6,7 @@ import { closeMenu } from "@/app/redux/headerSlice";
 import { RootState } from "@/app/redux/store";
 import axios from "@/lib/utils/axios";
 import { Product } from "@/types/others";
+import Image from 'next/image';
 
 const SearchModal = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -13,9 +14,9 @@ const SearchModal = () => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
-  
+
   const openSearchPopup = useSelector(
-    (state: RootState) => state.searchPopup.openSearchPopup
+    (state: RootState) => state.searchPopup.openSearchPopup,
   );
 
   const searchWrapperRef = useRef<HTMLDivElement>(null);
@@ -26,18 +27,6 @@ const SearchModal = () => {
       setSearchResults([]);
     }
   }, [openSearchPopup]);
-
-  useEffect(() => {
-    const delaySearch = setTimeout(() => {
-      if (searchQuery.trim().length > 2) {
-        handleSearch();
-      } else {
-        setSearchResults([]);
-      }
-    }, 300);
-
-    return () => clearTimeout(delaySearch);
-  }, [searchQuery]);
 
   const handleSearch = async () => {
     try {
@@ -50,6 +39,18 @@ const SearchModal = () => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    const delaySearch = setTimeout(() => {
+      if (searchQuery.trim().length > 2) {
+        handleSearch();
+      } else {
+        setSearchResults([]);
+      }
+    }, 300);
+
+    return () => clearTimeout(delaySearch);
+  }, [searchQuery, handleSearch]);
 
   const handleProductClick = (category: string, productId: string) => {
     router.push(`/catalog/${category}/${productId}`);
@@ -67,8 +68,8 @@ const SearchModal = () => {
   if (!openSearchPopup) return null;
 
   return (
-    <div 
-      className="search-modal-overlay" 
+    <div
+      className="search-modal-overlay"
       onClick={handleCloseByTarget}
       ref={searchWrapperRef}
     >
@@ -96,8 +97,8 @@ const SearchModal = () => {
               autoFocus
             />
           </div>
-          <button 
-            className="search-modal__close" 
+          <button
+            className="search-modal__close"
             onClick={() => dispatch(SearchPopupClose())}
           >
             Закрити
@@ -109,11 +110,13 @@ const SearchModal = () => {
             <div className="search-modal__loading">Завантаження...</div>
           )}
 
-          {!isLoading && searchQuery.trim().length > 2 && searchResults.length === 0 && (
-            <div className="search-modal__empty">
-              Нічого не знайдено за запитом "{searchQuery}"
-            </div>
-          )}
+          {!isLoading &&
+            searchQuery.trim().length > 2 &&
+            searchResults.length === 0 && (
+              <div className="search-modal__empty">
+                Нічого не знайдено за запитом "{searchQuery}"
+              </div>
+            )}
 
           {!isLoading && searchResults.length > 0 && (
             <div className="search-modal__list">
@@ -121,18 +124,26 @@ const SearchModal = () => {
                 <div
                   key={product._id}
                   className="search-modal__item"
-                  onClick={() => handleProductClick(product.category, product._id)}
+                  onClick={() =>
+                    handleProductClick(product.category, product._id)
+                  }
                 >
                   <div className="search-modal__item-image">
-                    <img
-                      src={`http://localhost:3002${product.images[0] || "/img/placeholder.jpg"}`}
+                    <Image
+                      src={`https://savonry-server-app-gki2.onrender.com${product.images[0] || "/img/placeholder.jpg"}`}
                       alt={product.name}
+                      width={100}
+                      height={100}
                     />
                   </div>
                   <div className="search-modal__item-info">
                     <h4 className="search-modal__item-name">{product.name}</h4>
-                    <p className="search-modal__item-category">{product.category}</p>
-                    <p className="search-modal__item-price">{product.price} грн</p>
+                    <p className="search-modal__item-category">
+                      {product.category}
+                    </p>
+                    <p className="search-modal__item-price">
+                      {product.price} грн
+                    </p>
                   </div>
                 </div>
               ))}

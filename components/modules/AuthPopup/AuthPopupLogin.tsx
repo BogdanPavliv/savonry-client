@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { AuthPopupClose } from "@/app/redux/authPopupSlice";
 import { useAuthForm } from "@/hooks/useAuthForm";
 import EmailInput from "./EmailInput";
@@ -23,7 +22,7 @@ const AuthPopupLogin = () => {
   useEffect(() => {
     if (status) toast(status);
     if (isAuth) {router.push("/"); dispatch(AuthPopupClose());};
-  }, [status, isAuth, router]);
+  }, [status, isAuth, router, dispatch]);
 
   const submitForm = (data: IInputs) => {
     try {

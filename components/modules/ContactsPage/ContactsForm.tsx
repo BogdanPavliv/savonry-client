@@ -1,11 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "@/styles/contacts/index.module.scss";
 import { useAuthForm } from "@/hooks/useAuthForm";
 import ContactsNameInput from "./ContactsNameInput";
 import ContactsEmailInput from "./ContactsEmailInput";
 import ContactsPhoneInput from "./ContactsPhoneInput";
 import ContactsCommentTextArea from "./ContactsCommentTextArea";
-import { IInputs } from "@/types/authPopup";
 
 const ContactsForm = () => {
   const { register, errors, handleSubmit } = useAuthForm();
@@ -14,7 +13,7 @@ const ContactsForm = () => {
   const [phone, setPhone] = useState("");
   const [comment, setComment] = useState("");
 
-  const submitForm = (data: IInputs) => {
+  const submitForm = () => {
     try {
       setUsername("");
       setEmail("");

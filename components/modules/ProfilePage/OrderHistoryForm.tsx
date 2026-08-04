@@ -218,7 +218,7 @@ const OrderHistoryForm: React.FC<OrderHistoryFormProps> = ({ user }) => {
                         <Image
                           src={
                             item.images?.[0]
-                              ? `http://localhost:3002${item.images[0]}`
+                              ? `https://savonry-server-app-gki2.onrender.com${item.images[0]}`
                               : "/no-image.png"
                           }
                           alt={item.name}

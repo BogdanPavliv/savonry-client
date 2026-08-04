@@ -19,18 +19,22 @@ const Advantages = () => {
           <div className={styles.advantages__bottom}>
             <div className={styles.advantages__bottom__left}>
               <div className={styles.advantages__item}>
-                <img
+                <Image
                   className={styles.advantages__icon}
                   src="/img/main-page/advantages/card.svg"
                   alt="card"
+                  width={100}
+                  height={100}
                 />
                 <p className={styles.advantages__text}>Зручна оплата онлайн</p>
               </div>
               <div className={styles.advantages__item}>
-                <img
+                <Image
                   className={styles.advantages__icon}
                   src="/img/main-page/advantages/delivery.svg"
                   alt="delivery"
+                  width={100}
+                  height={100}
                 />
                 <p className={styles.advantages__text}>Безкоштовна доставка</p>
               </div>
@@ -48,10 +52,12 @@ const Advantages = () => {
               <div
                 className={`${styles.advantages__item} ${styles.advantages__item__end}`}
               >
-                <img
+                <Image
                   className={styles.advantages__icon}
                   src="/img/main-page/advantages/nature.svg"
                   alt="nature"
+                  width={100}
+                  height={100}
                 />
                 <p className={styles.advantages__text}>
                   Натуральні інгредієнти

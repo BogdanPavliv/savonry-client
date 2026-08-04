@@ -2,6 +2,7 @@
 
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "@/lib/utils/axios";
+import { AxiosError } from "axios";
 
 interface CouponState {
   discount: number;
@@ -27,7 +28,7 @@ export const validateCoupon = createAsyncThunk<
     const res = await axios.post(
       "/coupons/validate",
       { code },
-      { withCredentials: true }
+      { withCredentials: true },
     );
 
     if (!res.data.valid) {
@@ -38,9 +39,11 @@ export const validateCoupon = createAsyncThunk<
       discount: Number(res.data.discount || 0),
       code,
     };
-  } catch (err: any) {
+  } catch (error) {
+    const err = error as AxiosError<{ message: string }>;
+
     return rejectWithValue(
-      err.response?.data?.message || "Помилка перевірки купона"
+      err.response?.data?.message || "Помилка перевірки купона",
     );
   }
 });
@@ -69,7 +72,7 @@ const couponSlice = createSlice({
         state.discount = action.payload.discount;
         state.appliedCode = action.payload.code;
         state.error = null;
-      }
+      },
     );
 
     builder.addCase(validateCoupon.rejected, (state, action) => {

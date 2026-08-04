@@ -8,6 +8,7 @@ import InterestedProducts from '@/components/modules/InterestedProducts/Interest
 import styles from "@/styles/product/index.module.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Image from "next/image";
 
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 
@@ -24,7 +25,7 @@ const ProductPageContent = ({
       <a href="#!" className={styles.thumbnail_link}>
         <img
           className={styles.thumbnail_img}
-          src={`http://localhost:3002${imageArray[id]?.original}`}
+          src={`https://savonry-server-app-gki2.onrender.com${imageArray[id]?.original}`}
           alt={`Thumbnail ${id}`}
         />
       </a>
@@ -54,9 +55,9 @@ const ProductPageContent = ({
             <Slider {...settings} className={styles.slick_product}>
               {product.images?.map((item, index) => (
                 <div className={styles.product__card} key={index}>
-                  <img
+                  <Image
                     className={styles.product__card__img}
-                    src={`http://localhost:3002${item.original}`}
+                    src={`https://savonry-server-app-gki2.onrender.com${item.original}`}
                     alt={`Slide ${index}`}
                     width={285}
                     height={286}

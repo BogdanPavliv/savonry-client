@@ -18,7 +18,9 @@ const ContactsCommentTextArea = ({ register, errors, comment, setComment }: IAut
           minLength: 2,
           maxLength: 300,
           onChange: (e) => {
-           setComment && setComment(e.target.value);
+            if (setComment) {
+              setComment(e.target.value);
+            }
           },
         })}
       />

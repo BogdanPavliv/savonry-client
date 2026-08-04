@@ -2,6 +2,7 @@
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "@/lib/utils/axios";
+import { AxiosError } from "axios";
 import { clearCart } from "../cart/cartSlice";
 
 export interface OrderItem {
@@ -83,9 +84,11 @@ export const createOrder = createAsyncThunk<
       orderId: res.data.orderId,
       orderData: res.data.orderData,
     };
-  } catch (err: any) {
+  } catch (error) {
+    const err = error as AxiosError<{ message: string }>;
+
     return rejectWithValue(
-      err.response?.data?.message || "Помилка створення замовлення"
+      err.response?.data?.message || "Помилка створення замовлення",
     );
   }
 });
@@ -106,9 +109,11 @@ export const fetchOrderById = createAsyncThunk<
     }
 
     return res.data.orderData;
-  } catch (err: any) {
+  } catch (error) {
+    const err = error as AxiosError<{ message: string }>;
+
     return rejectWithValue(
-      err.response?.data?.message || "Помилка при завантаженні замовлення"
+      err.response?.data?.message || "Помилка при завантаженні замовлення",
     );
   }
 });
@@ -129,9 +134,11 @@ export const fetchUserOrders = createAsyncThunk<
     }
 
     return res.data.orders;
-  } catch (err: any) {
+  } catch (error) {
+    const err = error as AxiosError<{ message: string }>;
+
     return rejectWithValue(
-      err.response?.data?.message || "Помилка при завантаженні замовлень"
+      err.response?.data?.message || "Помилка при завантаженні замовлень",
     );
   }
 });

@@ -1,9 +1,7 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/app/redux/store";
 import { fetchWatchedProducts } from "@/app/redux/features/products/productsSlice";
@@ -14,6 +12,7 @@ import { basePropsForMotion } from "@/constants/motion";
 import { motion } from "framer-motion";
 import { addToCart } from "@/app/redux/features/cart/cartSlice";
 import { sliderWatchedProductsSettings } from "@/app/utils/common";
+import Image from "next/image";
 
 const WatchedProducts = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -55,10 +54,12 @@ const WatchedProducts = () => {
                   <div className={styles.watched__slide}>
                     <div className={styles.watched__slide__image__wrapper}>
                       <Link href={`/catalog/${item.category}/${item._id}`} className={styles.watched__link}>
-                        <img
-                          src={`http://localhost:3002${item.images?.[0] || "/no-image.png"}`}
+                        <Image
+                          src={`https://savonry-server-app-gki2.onrender.com${item.images?.[0] || "/no-image.png"}`}
                           alt={item.name}
                           className={styles.watched__slide__image}
+                          width={200}
+                          height={200}
                         />
                       </Link>
                     </div>

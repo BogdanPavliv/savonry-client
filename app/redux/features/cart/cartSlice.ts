@@ -3,6 +3,7 @@
 
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "../../../../lib/utils/axios";
+import { AxiosError } from "axios";
 
 interface CartItem {
   productId: {
@@ -27,47 +28,65 @@ const initialState: CartState = {
 };
 
 // Отримати кошик
-export const fetchCart = createAsyncThunk<CartItem[], void, { rejectValue: string }>(
-  "cart/fetchCart",
-  async (_, { rejectWithValue }) => {
-    try {
-      const res = await axios.get("/cart", { withCredentials: true });
-      return res.data.items;
-    } catch (err: any) {
-      return rejectWithValue(err.response?.data?.message || "Помилка при отриманні кошика");
-    }
+
+export const fetchCart = createAsyncThunk<
+  CartItem[],
+  void,
+  { rejectValue: string }
+>("cart/fetchCart", async (_, { rejectWithValue }) => {
+  try {
+    const res = await axios.get("/cart", { withCredentials: true });
+    return res.data.items;
+  } catch (error) {
+    const err = error as AxiosError<{ message: string }>;
+
+    return rejectWithValue(
+      err.response?.data?.message || "Помилка при отриманні кошика",
+    );
   }
-);
+});
 
 // Додати товар в кошик
-export const addToCart = createAsyncThunk<CartItem[], { productId: string; quantity: number }, { rejectValue: string }>(
-  "cart/addToCart",
-  async (product, { rejectWithValue }) => {
-    try {
-      const res = await axios.post("/cart/add", product, { withCredentials: true });
-      return res.data.items;
-    } catch (err: any) {
-      return rejectWithValue(err.response?.data?.message || "Помилка при додаванні в кошик");
-    }
+export const addToCart = createAsyncThunk<
+  CartItem[],
+  { productId: string; quantity: number },
+  { rejectValue: string }
+>("cart/addToCart", async (product, { rejectWithValue }) => {
+  try {
+    const res = await axios.post("/cart/add", product, {
+      withCredentials: true,
+    });
+    return res.data.items;
+  } catch (error) {
+    const err = error as AxiosError<{ message: string }>;
+
+    return rejectWithValue(
+      err.response?.data?.message || "Помилка при додаванні в кошик",
+    );
   }
-);
+});
 
 // Видалити товар з кошика
-export const removeFromCart = createAsyncThunk<CartItem[], string, { rejectValue: string }>(
-  "cart/removeFromCart",
-  async (productId, { rejectWithValue }) => {
-    try {
-      const res = await axios.post(
-        "/cart/remove",
-        { productId },
-        { withCredentials: true }
-      );
-      return res.data.items;
-    } catch (err: any) {
-      return rejectWithValue(err.response?.data?.message || "Помилка при видаленні товару");
-    }
+export const removeFromCart = createAsyncThunk<
+  CartItem[],
+  string,
+  { rejectValue: string }
+>("cart/removeFromCart", async (productId, { rejectWithValue }) => {
+  try {
+    const res = await axios.post(
+      "/cart/remove",
+      { productId },
+      { withCredentials: true },
+    );
+    return res.data.items;
+  } catch (error) {
+    const err = error as AxiosError<{ message: string }>;
+
+    return rejectWithValue(
+      err.response?.data?.message || "Помилка при видаленні товару",
+    );
   }
-);
+});
 
 const cartSlice = createSlice({
   name: "cart",
@@ -84,10 +103,13 @@ const cartSlice = createSlice({
       state.loading = true;
       state.error = null;
     });
-    builder.addCase(fetchCart.fulfilled, (state, action: PayloadAction<CartItem[]>) => {
-      state.loading = false;
-      state.items = action.payload;
-    });
+    builder.addCase(
+      fetchCart.fulfilled,
+      (state, action: PayloadAction<CartItem[]>) => {
+        state.loading = false;
+        state.items = action.payload;
+      },
+    );
     builder.addCase(fetchCart.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload || "Помилка при отриманні кошика";
@@ -98,10 +120,13 @@ const cartSlice = createSlice({
       state.loading = true;
       state.error = null;
     });
-    builder.addCase(addToCart.fulfilled, (state, action: PayloadAction<CartItem[]>) => {
-      state.loading = false;
-      state.items = action.payload;
-    });
+    builder.addCase(
+      addToCart.fulfilled,
+      (state, action: PayloadAction<CartItem[]>) => {
+        state.loading = false;
+        state.items = action.payload;
+      },
+    );
     builder.addCase(addToCart.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload || "Помилка при додаванні в кошик";
@@ -112,10 +137,13 @@ const cartSlice = createSlice({
       state.loading = true;
       state.error = null;
     });
-    builder.addCase(removeFromCart.fulfilled, (state, action: PayloadAction<CartItem[]>) => {
-      state.loading = false;
-      state.items = action.payload;
-    });
+    builder.addCase(
+      removeFromCart.fulfilled,
+      (state, action: PayloadAction<CartItem[]>) => {
+        state.loading = false;
+        state.items = action.payload;
+      },
+    );
     builder.addCase(removeFromCart.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload || "Помилка при видаленні товару";

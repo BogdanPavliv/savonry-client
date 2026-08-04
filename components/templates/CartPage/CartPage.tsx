@@ -34,12 +34,14 @@ import { useCatalogBreadcrumbs } from "@/hooks/useCatalogBreadcrumbs";
 import { useRouter } from "next/navigation";
 import { IInputs } from "@/types/authPopup";
 
-const DELIVERY_PRICES: Record<string, number> = {
+const DELIVERY_PRICES = {
   "Кур'єром по Києву": 300,
   "CDEK До пункту видачі": 300,
   "Нова Пошта": 350,
   Укрпошта: 250,
-};
+} as const;
+
+type DeliveryMethod = keyof typeof DELIVERY_PRICES;
 
 const CartPage = () => {
   const router = useRouter();
@@ -61,9 +63,9 @@ const CartPage = () => {
   const [paymentMethod, setPaymentMethod] = useState<
     "cash" | "cards" | "receipt"
   >("cash");
-  const [deliveryMethod, setDeliveryMethod] = useState<
-    "Кур'єром по Києву" | "CDEK До пункту видачі" | "Нова Пошта" | "Укрпошта"
-  >("Кур'єром по Києву");
+  const [deliveryMethod, setDeliveryMethod] = useState<DeliveryMethod>(
+    "Кур'єром по Києву"
+  );
   const [couponInput, setCouponInput] = useState("");
 
   const { items } = useSelector((state: RootState) => state.cart);
@@ -202,7 +204,7 @@ const CartPage = () => {
                         <Image
                           src={
                             item.productId.images?.[0]
-                              ? `http://localhost:3002${item.productId.images[0]}`
+                              ? `https://savonry-server-app-gki2.onrender.com${item.productId.images[0]}`
                               : "/no-image.png"
                           }
                           className={styles.cart__image}
@@ -491,7 +493,7 @@ const CartPage = () => {
                                   id={method}
                                   checked={deliveryMethod === method}
                                   onChange={() =>
-                                    setDeliveryMethod(method as any)
+                                    setDeliveryMethod(method as DeliveryMethod)
                                   }
                                 />
                                 <span

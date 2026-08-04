@@ -6,8 +6,7 @@ import { AppDispatch } from "@/app/redux/store";
 import skeletonStyles from "@/styles/skeleton/index.module.scss";
 import styles from "@/styles/main-page/index.module.scss";
 import Link from "next/link";
-// import "swiper/css";
-// import "swiper/css/pagination";
+import Image from "next/image";
 import { basePropsForMotion } from "@/constants/motion";
 import { motion } from "framer-motion";
 import { addToCart } from "@/app/redux/features/cart/cartSlice";
@@ -79,10 +78,12 @@ const MainPageSection = ({ products, loading, error, title }: MainPageSectionPro
                         href={`/catalog/${item.category}/${item._id}`}
                         className={styles.main_section__link}
                       >
-                        <img
-                          src={`http://localhost:3002${item.images?.[0] || ""}`}
+                        <Image
+                          src={`https://savonry-server-app-gki2.onrender.com${item.images?.[0] || ""}`}
                           alt={item.name}
                           className={styles.main_section__slide__image}
+                          width={200}
+                          height={200}
                         />
                       </Link>
                     </div>
