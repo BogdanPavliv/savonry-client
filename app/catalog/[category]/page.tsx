@@ -1,7 +1,7 @@
 "use client";
 import ProductsPage from "@/components/templates/ProductsPage/ProductsPage";
 import { useParams, notFound } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { fetchProductsByCategory } from "@/app/redux/features/products/productsSlice";
 
 const Category = () => {
@@ -19,11 +19,13 @@ const Category = () => {
   }, [decodedCategory]);
 
   return (
-    <ProductsPage
-      pageName={decodedCategory}
-      fetchAction={fetchProductsByCategory}
-      extraParams={{ category: decodedCategory }}
-    />
+    <Suspense fallback={null}>
+      <ProductsPage
+        pageName={decodedCategory}
+        fetchAction={fetchProductsByCategory}
+        extraParams={{ category: decodedCategory }}
+      />
+    </Suspense>
   );
 };
 

@@ -1,4 +1,5 @@
 'use client';
+import { Suspense } from "react";
 import ProductsPage from "@/components/templates/ProductsPage/ProductsPage";
 import { fetchNewProducts } from "@/app/redux/features/products/productsSlice";
 
@@ -7,10 +8,12 @@ const NewProductsPage = () => {
   const pageName = "Новинки";
 
   return (
-    <ProductsPage
-      pageName={pageName}
-      fetchAction={fetchNewProducts}
-    />
+    <Suspense fallback={null}>
+      <ProductsPage
+        pageName={pageName}
+        fetchAction={fetchNewProducts}
+      />
+    </Suspense>
   );
 };
 

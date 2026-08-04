@@ -1,7 +1,7 @@
 'use client';
 import ProductsPage from "@/components/templates/ProductsPage/ProductsPage";
 import { useParams, notFound } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { fetchProductsBySubcategory } from "@/app/redux/features/products/productsSlice";
 
 const Subcategory = () => {
@@ -25,11 +25,13 @@ const Subcategory = () => {
 
   // ✅ Передаємо thunk та параметри у ProductsPage
   return (
-    <ProductsPage
-      pageName={decodedSubcategory}
-      fetchAction={fetchProductsBySubcategory}
-      extraParams={{ subcategory: decodedSubcategory }}
-    />
+    <Suspense fallback={null}>
+      <ProductsPage
+        pageName={decodedSubcategory}
+        fetchAction={fetchProductsBySubcategory}
+        extraParams={{ subcategory: decodedSubcategory }}
+      />
+    </Suspense>
   );
 };
 
