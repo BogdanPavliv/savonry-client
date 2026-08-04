@@ -23,7 +23,7 @@ const ProductPageContent = ({
   const settings: SliderSettings = {
     customPaging: (id: number) => (
       <a href="#!" className={styles.thumbnail_link}>
-        <img
+        <Image
           className={styles.thumbnail_img}
           src={`https://savonry-server-app-gki2.onrender.com${imageArray[id]?.original}`}
           alt={`Thumbnail ${id}`}
@@ -75,7 +75,7 @@ const ProductPageContent = ({
           </div>
           <h1 className={styles.product__name}>{product.name}</h1>
           <div className={styles.product__volume}>
-            Об'єм: {product.volume} г
+            Об&apos;єм: {product.volume} г
           </div>
           <div className={styles.product__description_sm}>
             {product.description}

@@ -6,18 +6,16 @@ import { toggleMenu } from "@/app/redux/headerSlice";
 import { AuthPopupOpen } from "@/app/redux/authPopupSlice";
 import { SearchPopupOpen } from "@/app/redux/searchPopupSlice";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { isTopOfPageProps } from "@/types/nav";
 import HeaderProfile from "./HeaderProfile";
 import { useSelector } from "react-redux";
-import { checkIsAuth, logout } from "@/app/redux/features/auth/authSlice";
-import { toast } from "react-toastify";
+import { checkIsAuth } from "@/app/redux/features/auth/authSlice";
 import Link from "next/link";
 import DropdownMenu from "./DropdownMenu";
 import { RootState, AppDispatch } from "@/app/redux/store";
 import { menuData } from "@/lib/utils/menuData";
 import { footerMenuDataClient } from "@/lib/utils/footerMenuData";
 
-const HeaderComponent = ({ isTopOfPage }: isTopOfPageProps) => {
+const HeaderComponent = () => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [isClientMenuOpen, setIsClientMenuOpen] = useState(false);
   const dispatch = useDispatch<AppDispatch>();

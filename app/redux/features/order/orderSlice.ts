@@ -13,11 +13,31 @@ export interface OrderItem {
   images?: string[];
 }
 
+export interface OrderUserData {
+  username?: string;
+  surname?: string;
+  email?: string;
+  phone?: string;
+  address?: string;
+  city?: string;
+  country?: string;
+  localIndex?: string;
+  dateOfBirth?: string;
+  comment?: string;
+}
+
+export interface OrderTotals {
+  subtotal?: number;
+  discount?: number;
+  deliveryPrice?: number;
+  finalTotal?: number;
+}
+
 export interface OrderData {
   _id?: string;
-  userData: any;
+  userData: OrderUserData;
   items: OrderItem[];
-  totals: any;
+  totals: OrderTotals;
   payment: string;
   delivery: string;
   date?: string;
@@ -25,9 +45,9 @@ export interface OrderData {
 }
 
 export interface OrderCreatePayload {
-  userData: any;
+  userData: OrderUserData;
   items: { productId: string; quantity: number }[];
-  totals: any;
+  totals: OrderTotals;
   payment: string;
   delivery: string;
 }

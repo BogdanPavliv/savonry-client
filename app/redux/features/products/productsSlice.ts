@@ -9,7 +9,7 @@ export interface Product {
   images: string[];
   isNewProduct: boolean;
   promotion: boolean;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 interface ProductsState {
