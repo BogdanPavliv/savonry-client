@@ -6,11 +6,7 @@ import styles from "@/styles/order-page/index.module.scss";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "@/app/redux/store";
-import {
-  fetchOrderById,
-  resetOrder,
-  OrderItem,
-} from "@/app/redux/features/order/orderSlice";
+import { fetchOrderById, resetOrder } from "@/app/redux/features/order/orderSlice";
 
 const OrderPage = () => {
   const { orderId } = useParams();
@@ -98,12 +94,12 @@ const OrderPage = () => {
 
         <div className={styles.order__products}>
           <h2 className={styles.order__products_title}>Товари у замовленні</h2>
-          {items.map((item: OrderItem) => (
+          {items.map((item: any) => (
             <div key={item.productId} className={styles.order__product}>
               <Image
                 src={
                   item.images?.[0]
-                    ? `https://savonry-server-app-gki2.onrender.com${item.images[0]}`
+                    ? `http://localhost:3002${item.images[0]}`
                     : "/no-image.png"
                 }
                 alt={item.name}
@@ -130,7 +126,7 @@ const OrderPage = () => {
 
         <div className={styles.order__note}>
           <span className={styles.order__note_icon}>ℹ️</span>
-          Менеджер зв&apos;яжеться з вами за потреби
+          Менеджер зв'яжеться з вами за потреби
         </div>
 
         <button

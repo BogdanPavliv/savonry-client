@@ -16,14 +16,12 @@ const ContactsEmailInput = ({ register, errors, email, setEmail }: IAuthInput) =
         placeholder="E-mail"
         autoComplete="off"
         {...register(
-          "email",
+          'email',
           {
-            ...emailValidationRules("Неправильний Email!", "Введіть email!"),
+            ...emailValidationRules("Неправильний Email!","Введіть email!"),
             onChange: (e) => {
-              if (setEmail) {
-                setEmail(e.target.value);
-              }
-            },
+              setEmail && setEmail(e.target.value);
+            }
           }
         )}
       />

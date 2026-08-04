@@ -23,9 +23,7 @@ const ProfileSurname = ({
         {...register("surname", {
           ...surnameValidationRules("Неприпустиме значення!", "Введіть ім'я!"),
           onChange: (e) => {
-            if (setSurname) {
-              setSurname(e.target.value);
-            }
+            setSurname && setSurname(e.target.value);
           },
         })}
       />

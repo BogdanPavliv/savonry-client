@@ -9,6 +9,7 @@ export interface Product {
   images: string[];
   isNewProduct: boolean;
   promotion: boolean;
+  [key: string]: any;
 }
 
 interface ProductsState {

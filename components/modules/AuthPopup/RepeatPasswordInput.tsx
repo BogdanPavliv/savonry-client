@@ -18,9 +18,7 @@ const RepeatPasswordInput = ({ register, errors, repeatPassword, setRepeatPasswo
           minLength: 4,
           maxLength: 40,
           onChange: (e) => {
-            if (setRepeatPassword) {
-              setRepeatPassword(e.target.value);
-            }
+            setRepeatPassword && setRepeatPassword(e.target.value);
           },
         })}
       />

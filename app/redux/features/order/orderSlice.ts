@@ -1,7 +1,6 @@
 "use client";
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { AxiosError } from "axios";
 import axios from "@/lib/utils/axios";
 import { clearCart } from "../cart/cartSlice";
 
@@ -13,30 +12,11 @@ export interface OrderItem {
   images?: string[];
 }
 
-interface OrderUserData {
-  username: string;
-  surname: string;
-  email: string;
-  dateOfBirth?: string;
-  city?: string;
-  address?: string;
-  localIndex?: string;
-  comment?: string;
-}
-
-interface OrderTotals {
-  subtotal: number;
-  coupon?: string | null;
-  discount: number;
-  deliveryPrice: number;
-  finalTotal: number;
-}
-
 export interface OrderData {
   _id?: string;
-  userData: OrderUserData;
+  userData: any;
   items: OrderItem[];
-  totals: OrderTotals;
+  totals: any;
   payment: string;
   delivery: string;
   date?: string;
@@ -44,9 +24,9 @@ export interface OrderData {
 }
 
 export interface OrderCreatePayload {
-  userData: OrderUserData;
+  userData: any;
   items: { productId: string; quantity: number }[];
-  totals: OrderTotals;
+  totals: any;
   payment: string;
   delivery: string;
 }
@@ -103,11 +83,9 @@ export const createOrder = createAsyncThunk<
       orderId: res.data.orderId,
       orderData: res.data.orderData,
     };
-  } catch (error: unknown) {
-    const axiosError = error as AxiosError<{ message?: string }>;
-
+  } catch (err: any) {
     return rejectWithValue(
-      axiosError.response?.data?.message || "Помилка створення замовлення"
+      err.response?.data?.message || "Помилка створення замовлення"
     );
   }
 });
@@ -128,11 +106,9 @@ export const fetchOrderById = createAsyncThunk<
     }
 
     return res.data.orderData;
-  } catch (error: unknown) {
-    const axiosError = error as AxiosError<{ message?: string }>;
-
+  } catch (err: any) {
     return rejectWithValue(
-      axiosError.response?.data?.message || "Помилка при завантаженні замовлення"
+      err.response?.data?.message || "Помилка при завантаженні замовлення"
     );
   }
 });
@@ -153,11 +129,9 @@ export const fetchUserOrders = createAsyncThunk<
     }
 
     return res.data.orders;
-  } catch (error: unknown) {
-    const axiosError = error as AxiosError<{ message?: string }>;
-
+  } catch (err: any) {
     return rejectWithValue(
-      axiosError.response?.data?.message || "Помилка при завантаженні замовлень"
+      err.response?.data?.message || "Помилка при завантаженні замовлень"
     );
   }
 });

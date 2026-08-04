@@ -17,12 +17,10 @@ const EmailInput = ({ register, errors, email, setEmail }: IAuthInput) => {
         {...register(
           'email',
           {
-            ...emailValidationRules("Неправильний Email!", "Введіть email!"),
+            ...emailValidationRules("Неправильний Email!","Введіть email!"),
             onChange: (e) => {
-              if (setEmail) {
-                setEmail(e.target.value);
-              }
-            },
+              setEmail && setEmail(e.target.value);
+            }
           }
         )}
       />

@@ -19,10 +19,8 @@ const SurnameInput = ({ register, errors, surname, setSurname }: IAuthInput) => 
           {
             ...surnameValidationRules("Неприпустиме значення!", "Введіть прізвище!"),
             onChange: (e) => {
-              if (setSurname) {
-                setSurname(e.target.value);
-              }
-            },
+              setSurname && setSurname(e.target.value);
+            }
           }
         )}
       />

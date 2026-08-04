@@ -21,9 +21,7 @@ const ProfilePhone = ({ register, errors, phone, setPhone }: IAuthInput) => {
             "Введіть телефон!"
           ),
           onChange: (e) => {
-            if (setPhone) {
-              setPhone(e.target.value);
-            }
+            setPhone && setPhone(e.target.value);
           },
         })}
       />

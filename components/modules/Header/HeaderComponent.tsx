@@ -27,11 +27,13 @@ const HeaderComponent = ({ isTopOfPage }: isTopOfPageProps) => {
 
   const isAuth = useSelector(checkIsAuth);
 
-  const handleLogout = () => {
+  const logoutHandler = () => {
     dispatch(logout());
     window.localStorage.removeItem("token");
     toast("Ви вийшли із системи.");
   };
+
+  const headerBackground = isTopOfPage ? "" : "";
 
   return (
     <>

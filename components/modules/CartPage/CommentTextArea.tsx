@@ -18,9 +18,7 @@ const CommentTextArea = ({ register, errors, comment, setComment }: IAuthInput) 
           minLength: 2,
           maxLength: 300,
           onChange: (e) => {
-            if (setComment) {
-              setComment(e.target.value);
-            }
+           setComment && setComment(e.target.value);
           },
         })}
       />

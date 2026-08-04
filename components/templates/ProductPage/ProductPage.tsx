@@ -9,12 +9,7 @@ import {
   fetchProductById,
 } from "@/app/redux/features/products/productsSlice";
 import { addToCart } from "@/app/redux/features/cart/cartSlice";
-import {
-  IProductPageProps,
-  ProductType,
-  CartItem,
-  UserType,
-} from "@/types/product";
+import { IProductPageProps, ProductType, CartItem, UserType } from "@/types/product";
 import { usePageTitle } from "@/hooks/usePageTitle";
 import ProductPageContent from "@/components/modules/ProductPage/ProductPageContent";
 import styles from "@/styles/product/index.module.scss";
@@ -25,7 +20,9 @@ const ProductPage = ({ productId, category }: IProductPageProps) => {
     (state: RootState) => state.products
   );
 
-  const { user } = useSelector((state: RootState) => state.auth);
+  const { user } = useSelector(
+    (state: RootState) => state.auth as { user: any }
+  );
 
   const [quantity, setQuantity] = useState<number>(1);
 
@@ -39,7 +36,7 @@ const ProductPage = ({ productId, category }: IProductPageProps) => {
         setQuantity(existingProduct.quantity);
       }
     }
-  }, [user, productId]);
+  }, [user?.cart, productId]);
 
   // 🔹 Отримуємо продукт
   useEffect(() => {
@@ -71,22 +68,14 @@ const ProductPage = ({ productId, category }: IProductPageProps) => {
     if (selectedProduct?.name) {
       // Зберігаємо в глобальний об'єкт для доступу з layout
       if (typeof window !== "undefined") {
-        const windowWithProductName = window as Window & {
-          __currentProductName?: string;
-        };
-
-        windowWithProductName.__currentProductName = selectedProduct.name;
+        (window as any).__currentProductName = selectedProduct.name;
         // Тригеримо подію для оновлення breadcrumbs
         window.dispatchEvent(new CustomEvent("productNameUpdate"));
       }
     }
     return () => {
       if (typeof window !== "undefined") {
-        const windowWithProductName = window as Window & {
-          __currentProductName?: string;
-        };
-
-        delete windowWithProductName.__currentProductName;
+        delete (window as any).__currentProductName;
         window.dispatchEvent(new CustomEvent("productNameUpdate"));
       }
     };

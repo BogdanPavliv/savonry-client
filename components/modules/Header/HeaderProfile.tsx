@@ -31,7 +31,7 @@ const HeaderProfile = forwardRef<HTMLDivElement, IWrappedComponentProps>(
           <Image
             src={
               user?.avatar
-                ? `https://savonry-server-app-gki2.onrender.com/${user.avatar}`
+                ? `http://localhost:3002/${user.avatar}`
                 : "/img/icons/user.svg"
             }
             alt="profile"

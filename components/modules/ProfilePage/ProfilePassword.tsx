@@ -24,9 +24,7 @@ const ProfilePassword = ({
           minLength: 4,
           maxLength: 40,
           onChange: (e) => {
-            if (setPassword) {
-              setPassword(e.target.value);
-            }
+            setPassword && setPassword(e.target.value);
           },
         })}
       />

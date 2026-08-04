@@ -69,7 +69,7 @@ const InterestedProducts = () => {
                         className={styles.interested__link}
                       >
                         <img
-                          src={`https://savonry-server-app-gki2.onrender.com${
+                          src={`http://localhost:3002${
                             item.images?.[0] || "/no-image.png"
                           }`}
                           alt={item.name}

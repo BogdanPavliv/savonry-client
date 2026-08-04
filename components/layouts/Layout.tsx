@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "@/app/redux/store";
 import { AuthPopupClose } from "@/app/redux/authPopupSlice";
+import { SearchPopupClose } from "@/app/redux/searchPopupSlice";
 import AuthPopup from "@/components/modules/AuthPopup/AuthPopup";
 import SearchModal from "@/components/modules/Header/SearchModal";
 import { getMe } from "@/app/redux/features/auth/authSlice";

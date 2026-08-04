@@ -24,7 +24,7 @@ const ProductPageContent = ({
       <a href="#!" className={styles.thumbnail_link}>
         <img
           className={styles.thumbnail_img}
-          src={`https://savonry-server-app-gki2.onrender.com${imageArray[id]?.original}`}
+          src={`http://localhost:3002${imageArray[id]?.original}`}
           alt={`Thumbnail ${id}`}
         />
       </a>
@@ -56,7 +56,7 @@ const ProductPageContent = ({
                 <div className={styles.product__card} key={index}>
                   <img
                     className={styles.product__card__img}
-                    src={`https://savonry-server-app-gki2.onrender.com${item.original}`}
+                    src={`http://localhost:3002${item.original}`}
                     alt={`Slide ${index}`}
                     width={285}
                     height={286}
@@ -74,7 +74,7 @@ const ProductPageContent = ({
           </div>
           <h1 className={styles.product__name}>{product.name}</h1>
           <div className={styles.product__volume}>
-            Об&apos;єм: {product.volume} г
+            Об'єм: {product.volume} г
           </div>
           <div className={styles.product__description_sm}>
             {product.description}

@@ -23,9 +23,7 @@ const ProfileName = ({
         {...register("username", {
           ...nameValidationRules("Неприпустиме значення!", "Введіть ім'я!"),
           onChange: (e) => {
-            if (setUsername) {
-              setUsername(e.target.value);
-            }
+            setUsername && setUsername(e.target.value);
           },
         })}
       />

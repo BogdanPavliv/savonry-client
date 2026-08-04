@@ -111,7 +111,7 @@ const SearchModal = () => {
 
           {!isLoading && searchQuery.trim().length > 2 && searchResults.length === 0 && (
             <div className="search-modal__empty">
-              Нічого не знайдено за запитом &quot;{searchQuery}&quot;
+              Нічого не знайдено за запитом "{searchQuery}"
             </div>
           )}
 
@@ -125,7 +125,7 @@ const SearchModal = () => {
                 >
                   <div className="search-modal__item-image">
                     <img
-                      src={`https://savonry-server-app-gki2.onrender.com${product.images[0] || "/img/placeholder.jpg"}`}
+                      src={`http://localhost:3002${product.images[0] || "/img/placeholder.jpg"}`}
                       alt={product.name}
                     />
                   </div>
