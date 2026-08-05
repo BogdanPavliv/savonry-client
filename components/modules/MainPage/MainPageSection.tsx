@@ -82,8 +82,8 @@ const MainPageSection = ({ products, loading, error, title }: MainPageSectionPro
                           src={`https://savonry-server-app-gki2.onrender.com${item.images?.[0] || ""}`}
                           alt={item.name}
                           className={styles.main_section__slide__image}
-                          width={200}
-                          height={200}
+                          width={285}
+                          height={286}
                         />
                       </Link>
                     </div>
