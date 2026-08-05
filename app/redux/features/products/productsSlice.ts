@@ -123,10 +123,7 @@ export const fetchPromotionalProducts = createAsyncThunk(
 // ✅ Хіти продажів (Bestsellers)
 export const fetchBestsellerProducts = createAsyncThunk(
   "products/fetchBestsellerProducts",
-  async ({
-    offset = 0,
-    limit = 12,
-  }: { offset?: number; limit?: number } = {}) => {
+  async ({ offset = 0, limit = 12 }: { offset?: number; limit?: number } = {}) => {
     const { data } = await axios.get(
       `/products/bestsellers?offset=${offset}&limit=${limit}`
     );
