@@ -3,7 +3,7 @@
 import styles from "@/styles/catalog/index.module.scss";
 import skeletonStyles from "@/styles/skeleton/index.module.scss";
 import Link from "next/link";
-import Image from 'next/image'
+import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/app/redux/store";
 import { addToCart } from "@/app/redux/features/cart/cartSlice";
@@ -16,7 +16,11 @@ import InterestedProducts from "@/components/modules/InterestedProducts/Interest
 import { useProductsPagination } from "@/hooks/useProductsPagination";
 import { ProductsPageProps } from "@/types/others";
 
-const ProductsPage = ({ pageName, fetchAction, extraParams }: ProductsPageProps) => {
+const ProductsPage = ({
+  pageName,
+  fetchAction,
+  extraParams,
+}: ProductsPageProps) => {
   const dispatch = useDispatch<AppDispatch>();
   const { products, loading, error, currentPage, paginationProps } =
     useProductsPagination(pageName, fetchAction, extraParams);
@@ -74,9 +78,11 @@ const ProductsPage = ({ pageName, fetchAction, extraParams }: ProductsPageProps)
                   >
                     <Image
                       className={styles.catalog__image}
-                      src={`https://savonry-server-app-gki2.onrender.com${
-                        product.images?.[0] || "/no-image.png"
-                      }`}
+                      src={
+                        product.images?.[0]
+                          ? `https://savonry-server-app-gki2.onrender.com${product.images[0]}`
+                          : "/no-image.png"
+                      }
                       alt={product.name}
                       width={285}
                       height={286}
@@ -90,7 +96,9 @@ const ProductsPage = ({ pageName, fetchAction, extraParams }: ProductsPageProps)
                   <h3 className={styles.catalog__name}>{product.name}</h3>
                 </Link>
                 <div className={styles.catalog__bottom}>
-                  <div className={styles.catalog__price}>{product.price} грн</div>
+                  <div className={styles.catalog__price}>
+                    {product.price} грн
+                  </div>
                   <button
                     className={styles.catalog__button}
                     onClick={() => handleAddToCart(product._id)}

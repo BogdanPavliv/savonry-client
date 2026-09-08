@@ -1,80 +1,82 @@
+import Link from "next/link";
+
 const BodyListItems = () => {
   return (
     <>
       <li className="mobile_menu__right_item">
-        <a className="mobile_menu__right_link" href="">
+        <Link className="mobile_menu__right_link" href="/subcategories/тіло/антибактеріальні засоби">
           Антибактеріальні засоби
-        </a>
+        </Link>
       </li>
       <li className="mobile_menu__right_item">
-        <a className="mobile_menu__right_link" href="">
-          Антицелюлітна серія SLIM&SEXY
-        </a>
+        <Link className="mobile_menu__right_link" href="/subcategories/тіло/антицелюлітна серія">
+          Антицелюлітна серія
+        </Link>
       </li>
       <li className="mobile_menu__right_item">
-        <a className="mobile_menu__right_link" href="">
-          Антицелюлітна Скраб-маска
-        </a>
+        <Link className="mobile_menu__right_link" href="/subcategories/тіло/антицелюлітна скраб-маска">
+          Антицелюлітна скраб-маска
+        </Link>
       </li>
       <li className="mobile_menu__right_item">
-        <a className="mobile_menu__right_link" href="">
-          Гель алое аера
-        </a>
+        <Link className="mobile_menu__right_link" href="/subcategories/тіло/гель алое вера">
+          Гель алое вера
+        </Link>
       </li>
       <li className="mobile_menu__right_item">
-        <a className="mobile_menu__right_link" href="">
+        <Link className="mobile_menu__right_link" href="/subcategories/тіло/дезодоранти">
           Дезодоранти
-        </a>
+        </Link>
       </li>
       <li className="mobile_menu__right_item">
-        <a className="mobile_menu__right_link" href="">
+        <Link className="mobile_menu__right_link" href="/subcategories/тіло/креми для тіла">
           Креми для тіла
-        </a>
+        </Link>
       </li>
       <li className="mobile_menu__right_item">
-        <a className="mobile_menu__right_link" href="">
+        <Link className="mobile_menu__right_link" href="/subcategories/тіло/масажні плитки">
           Масажні плитки
-        </a>
+        </Link>
       </li>
       <li className="mobile_menu__right_item">
-        <a className="mobile_menu__right_link" href="">
-          Натуральні олії
-        </a>
+        <Link className="mobile_menu__right_link" href="/subcategories/тіло/натуральні масла">
+          Натуральні масла
+        </Link>
       </li>
       <li className="mobile_menu__right_item">
-        <a className="mobile_menu__right_link" href="">
+        <Link className="mobile_menu__right_link" href="/subcategories/тіло/обгортання">
           Обгортання
-        </a>
+        </Link>
       </li>
       <li className="mobile_menu__right_item">
-        <a className="mobile_menu__right_link" href="">
+        <Link className="mobile_menu__right_link" href="/subcategories/тіло/парфумовані спреї для тіла">
           Парфумовані спреї для тіла
-        </a>
+        </Link>
       </li>
       <li className="mobile_menu__right_item">
-        <a className="mobile_menu__right_link" href="">
+        <Link className="mobile_menu__right_link" href="/subcategories/тіло/скраби для тіла">
           Скраби для тіла
-        </a>
+        </Link>
       </li>
       <li className="mobile_menu__right_item">
-        <a className="mobile_menu__right_link" href="">
+        <Link className="mobile_menu__right_link" href="/subcategories/тіло/сонцезахисні засоби">
           Сонцезахисні засоби
-        </a>
+        </Link>
       </li>
       <li className="mobile_menu__right_item">
-        <a className="mobile_menu__right_link" href="">
+        <Link className="mobile_menu__right_link" href="/subcategories/тіло/засоби для ніг">
           Засоби для ніг
-        </a>
+        </Link>
       </li>
       <li className="mobile_menu__right_item">
-        <a className="mobile_menu__right_link" href="">
+        <Link className="mobile_menu__right_link" href="/subcategories/тіло/засоби для рук">
           Засоби для рук
-        </a>
+        </Link>
       </li>
       <li className="mobile_menu__right_item">
-        <a className="mobile_menu__right_link" href="">
+        <Link className="mobile_menu__right_link" href="/subcategories/тіло/щітки для сухого масажу">
           Щітки для сухого масажу
-        </a>
+        </Link>
       </li>
     </>
   );

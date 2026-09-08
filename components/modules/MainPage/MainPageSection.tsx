@@ -14,8 +14,12 @@ import { sliderGoodsSettings } from "@/app/utils/common";
 import { useEffect, useState } from "react";
 import { MainPageSectionProps } from "@/types/others";
 
-
-const MainPageSection = ({ products, loading, error, title }: MainPageSectionProps) => {
+const MainPageSection = ({
+  products,
+  loading,
+  error,
+  title,
+}: MainPageSectionProps) => {
   const dispatch = useDispatch<AppDispatch>();
   const [slidesPerView, setSlidesPerView] = useState(4); // default for desktop
 
@@ -55,9 +59,7 @@ const MainPageSection = ({ products, loading, error, title }: MainPageSectionPro
               className={skeletonStyles.skeleton__main__page}
               {...basePropsForMotion}
             >
-              {Array.from(
-                new Array(Math.floor(slidesPerView))
-              ).map((_, i) => (
+              {Array.from(new Array(Math.floor(slidesPerView))).map((_, i) => (
                 <li key={i} className={skeletonStyles.skeleton__item}>
                   <div className={skeletonStyles.skeleton__item__light} />
                 </li>
@@ -79,7 +81,11 @@ const MainPageSection = ({ products, loading, error, title }: MainPageSectionPro
                         className={styles.main_section__link}
                       >
                         <Image
-                          src={`https://savonry-server-app-gki2.onrender.com${item.images?.[0] || ""}`}
+                          src={
+                            item.images?.[0]
+                              ? `https://savonry-server-app-gki2.onrender.com${item.images[0]}`
+                              : "/no-image.png"
+                          }
                           alt={item.name}
                           className={styles.main_section__slide__image}
                           width={285}

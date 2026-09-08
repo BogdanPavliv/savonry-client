@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -26,22 +27,22 @@ const Menu = () => {
   const [activeListId, setActiveListId] = useState(5);
   const dispatch = useDispatch();
   const isMenuToggled = useSelector(
-    (state: RootState) => state.header.isMenuToggled
+    (state: RootState) => state.header.isMenuToggled,
   );
   const isMedia767 = useMediaQuery(767);
-  
+
   const handlePromotionsList = () => setActiveListId(1);
   const handleNoveltyList = () => setActiveListId(2);
   const handleFaceList = () => setActiveListId(3);
   const handleBathAndShowerList = () => setActiveListId(4);
   const handleShowBodyList = () => setActiveListId(5);
-  const handleForHimList = () => setActiveListId(6);
+  const handleForHimList = () => setActiveListId(12);
   const handleGiftsList = () => setActiveListId(7);
   const handleSeriesList = () => setActiveListId(8);
   const handleAccessoriesList = () => setActiveListId(9);
   const handleForTheClientList = () => setActiveListId(10);
   const handleNewsList = () => setActiveListId(11);
-  const handleHairList = () => setActiveListId(12);
+  const handleHairList = () => setActiveListId(6);
   const handleArticlesList = () => setActiveListId(13);
 
   return (
@@ -92,50 +93,35 @@ const Menu = () => {
           <div className="mobile_menu__left">
             <ul className="mobile_menu__list">
               <li className="mobile_menu__item">
-                {!isMedia767 && (
-                  <button
-                    className="mobile_menu__btn"
-                    onMouseEnter={handlePromotionsList}
-                  >
-                    Акції
-                  </button>
-                )}
-                {isMedia767 && (
-                  <Accordion title={"Акції"} titleClass="mobile_menu__btn">
-                    <ul className="mobile_menu__right_list">
-                      <PromotionsListItems />
-                    </ul>
-                  </Accordion>
-                )}
+                <Link
+                  href="/promotion"
+                  className="mobile_menu__btn"
+                  onMouseEnter={handlePromotionsList}
+                >
+                  Акції
+                </Link>
+              </li>
+              <li className="mobile_menu__item">
+                <Link
+                  href="/new-product"
+                  className="mobile_menu__btn"
+                  onMouseEnter={handleNoveltyList}
+                >
+                  Новинки
+                </Link>
               </li>
               <li className="mobile_menu__item">
                 {!isMedia767 && (
-                  <button
-                    className="mobile_menu__btn"
-                    onMouseEnter={handleNoveltyList}
-                  >
-                    Новинки
-                  </button>
-                )}
-                {isMedia767 && (
-                  <Accordion title={"Новинки"} titleClass="mobile_menu__btn">
-                    <ul className="mobile_menu__right_list">
-                      <NoveltyListItems />
-                    </ul>
-                  </Accordion>
-                )}
-              </li>
-              <li className="mobile_menu__item">
-                {!isMedia767 && (
-                  <button
+                  <Link
+                    href="/catalog/обличчя"
                     className="mobile_menu__btn"
                     onMouseEnter={handleFaceList}
                   >
-                    Лице
-                  </button>
+                    Обличчя
+                  </Link>
                 )}
                 {isMedia767 && (
-                  <Accordion title={"Лице"} titleClass="mobile_menu__btn">
+                  <Accordion title={"Обличчя"} titleClass="mobile_menu__btn">
                     <ul className="mobile_menu__right_list">
                       <FaceListItems />
                     </ul>
@@ -144,12 +130,13 @@ const Menu = () => {
               </li>
               <li className="mobile_menu__item">
                 {!isMedia767 && (
-                  <button
+                  <Link
+                    href="/catalog/ванна та душ"
                     className="mobile_menu__btn"
                     onMouseEnter={handleBathAndShowerList}
                   >
                     Ванна та душ
-                  </button>
+                  </Link>
                 )}
                 {isMedia767 && (
                   <Accordion
@@ -164,12 +151,13 @@ const Menu = () => {
               </li>
               <li className="mobile_menu__item">
                 {!isMedia767 && (
-                  <button
+                  <Link
+                    href="/catalog/тіло"
                     className="mobile_menu__btn"
                     onMouseEnter={handleShowBodyList}
                   >
                     Тіло
-                  </button>
+                  </Link>
                 )}
                 {isMedia767 && (
                   <Accordion title={"Тіло"} titleClass="mobile_menu__btn">
@@ -181,12 +169,13 @@ const Menu = () => {
               </li>
               <li className="mobile_menu__item">
                 {!isMedia767 && (
-                  <button
+                  <Link
+                    href="/catalog/волосся"
                     className="mobile_menu__btn"
                     onMouseEnter={handleHairList}
                   >
                     Волосся
-                  </button>
+                  </Link>
                 )}
                 {isMedia767 && (
                   <Accordion title={"Волосся"} titleClass="mobile_menu__btn">
@@ -197,303 +186,45 @@ const Menu = () => {
                 )}
               </li>
               <li className="mobile_menu__item">
-                {!isMedia767 && (
-                  <button
-                    className="mobile_menu__btn"
-                    onMouseEnter={handleForHimList}
-                  >
-                    Для нього
-                  </button>
-                )}
-                {isMedia767 && (
-                  <Accordion title={"Для нього"} titleClass="mobile_menu__btn">
-                    <ul className="mobile_menu__right_list">
-                      <ForHimListItems />
-                    </ul>
-                  </Accordion>
-                )}
+                <Link
+                  href="/catalog/для нього"
+                  className="mobile_menu__btn"
+                  onMouseEnter={handleForHimList}
+                >
+                  Для нього
+                </Link>
               </li>
               <li className="mobile_menu__item">
-                {!isMedia767 && (
-                  <button
-                    className="mobile_menu__btn"
-                    onMouseEnter={handleGiftsList}
-                  >
-                    Подарунки
-                  </button>
-                )}
-                {isMedia767 && (
-                  <Accordion title={"Подарунки"} titleClass="mobile_menu__btn">
-                    <ul className="mobile_menu__right_list">
-                      <GiftsListItems />
-                    </ul>
-                  </Accordion>
-                )}
+                <Link
+                  href="/catalog/подарунки"
+                  className="mobile_menu__btn"
+                  onMouseEnter={handleGiftsList}
+                >
+                  Подарунки
+                </Link>
               </li>
               <li className="mobile_menu__item">
-                {!isMedia767 && (
-                  <button
-                    className="mobile_menu__btn"
-                    onMouseEnter={handleSeriesList}
-                  >
-                    Серії
-                  </button>
-                )}
-                {isMedia767 && (
-                  <Accordion title={"Серії"} titleClass="mobile_menu__btn">
-                    <ul className="mobile_menu__right_list">
-                      <SeriesListItems />
-                    </ul>
-                  </Accordion>
-                )}
+                <Link
+                  href="/catalog/серії"
+                  className="mobile_menu__btn"
+                  onMouseEnter={handleSeriesList}
+                >
+                  Серії
+                </Link>
               </li>
               <li className="mobile_menu__item">
-                {!isMedia767 && (
-                  <button
-                    className="mobile_menu__btn"
-                    onMouseEnter={handleAccessoriesList}
-                  >
-                    Аксесуари
-                  </button>
-                )}
-                {isMedia767 && (
-                  <Accordion title={"Аксесуари"} titleClass="mobile_menu__btn">
-                    <ul className="mobile_menu__right_list">
-                      <AccessoriesListItems />
-                    </ul>
-                  </Accordion>
-                )}
-              </li>
-              <li className="mobile_menu__item">
-                {!isMedia767 && (
-                  <button
-                    className="mobile_menu__btn"
-                    onMouseEnter={handleForTheClientList}
-                  >
-                    Для клієнта
-                  </button>
-                )}
-                {isMedia767 && (
-                  <Accordion
-                    title={"Для клієнта"}
-                    titleClass="mobile_menu__btn"
-                  >
-                    <ul className="mobile_menu__right_list">
-                      <ForTheClientListItems />
-                    </ul>
-                  </Accordion>
-                )}
-              </li>
-              <li className="mobile_menu__item">
-                {!isMedia767 && (
-                  <button
-                    className="mobile_menu__btn"
-                    onMouseEnter={handleNewsList}
-                  >
-                    Новини
-                  </button>
-                )}
-                {isMedia767 && (
-                  <Accordion title={"Новини"} titleClass="mobile_menu__btn">
-                    <ul className="mobile_menu__right_list">
-                      <NewsListItems />
-                    </ul>
-                  </Accordion>
-                )}
-              </li>
-              <li className="mobile_menu__item">
-                {!isMedia767 && (
-                  <button
-                    className="mobile_menu__btn"
-                    onMouseEnter={handleArticlesList}
-                  >
-                    Статті
-                  </button>
-                )}
-                {isMedia767 && (
-                  <Accordion title={"Статті"} titleClass="mobile_menu__btn">
-                    <ul className="mobile_menu__right_list">
-                      <ArticlesListItems />
-                    </ul>
-                  </Accordion>
-                )}
+                <Link
+                  href="/catalog/аксесуари"
+                  className="mobile_menu__btn"
+                  onMouseEnter={handleAccessoriesList}
+                >
+                  Аксесуари
+                </Link>
               </li>
             </ul>
           </div>
           {!isMedia767 && (
             <div className="mobile_menu__right">
-              <AnimatePresence>
-                {activeListId === 1 && (
-                  <motion.ul
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="mobile_menu__right_list"
-                  >
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антибактеріальні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна серія SLIM&SEXY
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна Скраб-маска
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Гель алое аера
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Дезодоранти
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Креми для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Масажні плитки
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Натуральні олії
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Обгортання
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Парфумовані спреї для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Скраби для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Сонцезахисні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для ніг
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для рук
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Щітки для сухого масажу
-                      </a>
-                    </li>
-                  </motion.ul>
-                )}
-              </AnimatePresence>
-              <AnimatePresence>
-                {activeListId === 2 && (
-                  <motion.ul
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="mobile_menu__right_list"
-                  >
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антибактеріальні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна серія SLIM&SEXY
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна Скраб-маска
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Гель алое аера
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Дезодоранти
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Креми для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Масажні плитки
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Натуральні олії
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Обгортання
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Парфумовані спреї для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Скраби для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Сонцезахисні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для ніг
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для рук
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Щітки для сухого масажу
-                      </a>
-                    </li>
-                  </motion.ul>
-                )}
-              </AnimatePresence>
               <AnimatePresence>
                 {activeListId === 3 && (
                   <motion.ul
@@ -503,79 +234,24 @@ const Menu = () => {
                     className="mobile_menu__right_list"
                   >
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антибактеріальні засоби
-                      </a>
+                      <Link className="mobile_menu__right_link" href="/subcategories/обличчя/креми">
+                        Креми для обличчя
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна серія SLIM&SEXY
-                      </a>
+                      <Link className="mobile_menu__right_link" href="/subcategories/обличчя/скраби">
+                        Скраби
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна Скраб-маска
-                      </a>
+                      <Link className="mobile_menu__right_link" href="/subcategories/обличчя/сироватки">
+                        Сироватки
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Гель алое аера
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Дезодоранти
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Креми для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Масажні плитки
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Натуральні олії
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Обгортання
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Парфумовані спреї для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Скраби для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Сонцезахисні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для ніг
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для рук
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Щітки для сухого масажу
-                      </a>
+                      <Link className="mobile_menu__right_link" href="/subcategories/обличчя/маски">
+                        Маски
+                      </Link>
                     </li>
                   </motion.ul>
                 )}
@@ -589,79 +265,24 @@ const Menu = () => {
                     className="mobile_menu__right_list"
                   >
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антибактеріальні засоби
-                      </a>
+                      <Link className="mobile_menu__right_link" href="/subcategories/ванна та душ/бомбочки для ванни">
+                        Бомбочки для ванни
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна серія SLIM&SEXY
-                      </a>
+                      <Link className="mobile_menu__right_link" href="/subcategories/ванна та душ/солі">
+                        Солі
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна Скраб-маска
-                      </a>
+                      <Link className="mobile_menu__right_link" href="/subcategories/ванна та душ/мило ручної роботи">
+                        Мило ручної роботи
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Гель алое аера
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Дезодоранти
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Креми для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Масажні плитки
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Натуральні олії
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Обгортання
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Парфумовані спреї для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Скраби для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Сонцезахисні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для ніг
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для рук
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Щітки для сухого масажу
-                      </a>
+                      <Link className="mobile_menu__right_link" href="/subcategories/ванна та душ/вируючі кульки для ванн">
+                        Вируючі кульки для ванн
+                      </Link>
                     </li>
                   </motion.ul>
                 )}
@@ -675,79 +296,79 @@ const Menu = () => {
                     className="mobile_menu__right_list"
                   >
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
+                      <Link className="mobile_menu__right_link" href="/subcategories/тіло/антибактеріальні засоби">
                         Антибактеріальні засоби
-                      </a>
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна серія SLIM&SEXY
-                      </a>
+                      <Link className="mobile_menu__right_link" href="/subcategories/тіло/антицелюлітна серія">
+                        Антицелюлітна серія
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна Скраб-маска
-                      </a>
+                      <Link className="mobile_menu__right_link" href="/subcategories/тіло/антицелюлітна скраб-маска">
+                        Антицелюлітна скраб-маска
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Гель алое аера
-                      </a>
+                      <Link className="mobile_menu__right_link" href="/subcategories/тіло/гель алое вера">
+                        Гель алое вера
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
+                      <Link className="mobile_menu__right_link" href="/subcategories/тіло/дезодоранти">
                         Дезодоранти
-                      </a>
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
+                      <Link className="mobile_menu__right_link" href="/subcategories/тіло/креми для тіла">
                         Креми для тіла
-                      </a>
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
+                      <Link className="mobile_menu__right_link" href="/subcategories/тіло/масажні плитки">
                         Масажні плитки
-                      </a>
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Натуральні олії
-                      </a>
+                      <Link className="mobile_menu__right_link" href="/subcategories/тіло/натуральні масла">
+                        Натуральні масла
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
+                      <Link className="mobile_menu__right_link" href="/subcategories/тіло/обгортання">
                         Обгортання
-                      </a>
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
+                      <Link className="mobile_menu__right_link" href="/subcategories/тіло/парфумовані спреї для тіла">
                         Парфумовані спреї для тіла
-                      </a>
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
+                      <Link className="mobile_menu__right_link" href="/subcategories/тіло/скраби для тіла">
                         Скраби для тіла
-                      </a>
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
+                      <Link className="mobile_menu__right_link" href="/subcategories/тіло/сонцезахисні засоби">
                         Сонцезахисні засоби
-                      </a>
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
+                      <Link className="mobile_menu__right_link" href="/subcategories/тіло/засоби для ніг">
                         Засоби для ніг
-                      </a>
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
+                      <Link className="mobile_menu__right_link" href="/subcategories/тіло/засоби для рук">
                         Засоби для рук
-                      </a>
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
+                      <Link className="mobile_menu__right_link" href="/subcategories/тіло/щітки для сухого масажу">
                         Щітки для сухого масажу
-                      </a>
+                      </Link>
                     </li>
                   </motion.ul>
                 )}
@@ -761,681 +382,19 @@ const Menu = () => {
                     className="mobile_menu__right_list"
                   >
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антибактеріальні засоби
-                      </a>
+                      <Link className="mobile_menu__right_link" href="/subcategories/волосся/шампуні">
+                        Шампуні
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна серія SLIM&SEXY
-                      </a>
+                      <Link className="mobile_menu__right_link" href="/subcategories/волосся/бальзами">
+                        Бальзами
+                      </Link>
                     </li>
                     <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна Скраб-маска
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Гель алое аера
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Дезодоранти
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Креми для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Масажні плитки
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Натуральні олії
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Обгортання
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Парфумовані спреї для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Скраби для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Сонцезахисні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для ніг
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для рук
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Щітки для сухого масажу
-                      </a>
-                    </li>
-                  </motion.ul>
-                )}
-              </AnimatePresence>
-              <AnimatePresence>
-                {activeListId === 7 && (
-                  <motion.ul
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="mobile_menu__right_list"
-                  >
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антибактеріальні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна серія SLIM&SEXY
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна Скраб-маска
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Гель алое аера
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Дезодоранти
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Креми для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Масажні плитки
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Натуральні олії
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Обгортання
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Парфумовані спреї для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Скраби для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Сонцезахисні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для ніг
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для рук
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Щітки для сухого масажу
-                      </a>
-                    </li>
-                  </motion.ul>
-                )}
-              </AnimatePresence>
-              <AnimatePresence>
-                {activeListId === 8 && (
-                  <motion.ul
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="mobile_menu__right_list"
-                  >
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антибактеріальні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна серія SLIM&SEXY
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна Скраб-маска
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Гель алое аера
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Дезодоранти
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Креми для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Масажні плитки
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Натуральні олії
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Обгортання
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Парфумовані спреї для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Скраби для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Сонцезахисні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для ніг
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для рук
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Щітки для сухого масажу
-                      </a>
-                    </li>
-                  </motion.ul>
-                )}
-              </AnimatePresence>
-              <AnimatePresence>
-                {activeListId === 9 && (
-                  <motion.ul
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="mobile_menu__right_list"
-                  >
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антибактеріальні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна серія SLIM&SEXY
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна Скраб-маска
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Гель алое аера
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Дезодоранти
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Креми для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Масажні плитки
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Натуральні олії
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Обгортання
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Парфумовані спреї для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Скраби для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Сонцезахисні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для ніг
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для рук
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Щітки для сухого масажу
-                      </a>
-                    </li>
-                  </motion.ul>
-                )}
-              </AnimatePresence>
-              <AnimatePresence>
-                {activeListId === 10 && (
-                  <motion.ul
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="mobile_menu__right_list"
-                  >
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антибактеріальні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна серія SLIM&SEXY
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна Скраб-маска
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Гель алое аера
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Дезодоранти
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Креми для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Масажні плитки
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Натуральні олії
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Обгортання
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Парфумовані спреї для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Скраби для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Сонцезахисні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для ніг
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для рук
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Щітки для сухого масажу
-                      </a>
-                    </li>
-                  </motion.ul>
-                )}
-              </AnimatePresence>
-              <AnimatePresence>
-                {activeListId === 11 && (
-                  <motion.ul
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="mobile_menu__right_list"
-                  >
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антибактеріальні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна серія SLIM&SEXY
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна Скраб-маска
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Гель алое аера
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Дезодоранти
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Креми для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Масажні плитки
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Натуральні олії
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Обгортання
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Парфумовані спреї для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Скраби для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Сонцезахисні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для ніг
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для рук
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Щітки для сухого масажу
-                      </a>
-                    </li>
-                  </motion.ul>
-                )}
-              </AnimatePresence>
-              <AnimatePresence>
-                {activeListId === 12 && (
-                  <motion.ul
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="mobile_menu__right_list"
-                  >
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антибактеріальні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна серія SLIM&SEXY
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна Скраб-маска
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Гель алое аера
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Дезодоранти
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Креми для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Масажні плитки
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Натуральні олії
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Обгортання
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Парфумовані спреї для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Скраби для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Сонцезахисні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для ніг
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для рук
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Щітки для сухого масажу
-                      </a>
-                    </li>
-                  </motion.ul>
-                )}
-              </AnimatePresence>
-              <AnimatePresence>
-                {activeListId === 13 && (
-                  <motion.ul
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="mobile_menu__right_list"
-                  >
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антибактеріальні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна серія SLIM&SEXY
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Антицелюлітна Скраб-маска
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Гель алое аера
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Дезодоранти
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Креми для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Масажні плитки
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Натуральні олії
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Обгортання
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Парфумовані спреї для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Скраби для тіла
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Сонцезахисні засоби
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для ніг
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Засоби для рук
-                      </a>
-                    </li>
-                    <li className="mobile_menu__right_item">
-                      <a className="mobile_menu__right_link" href="">
-                        Щітки для сухого масажу
-                      </a>
+                      <Link className="mobile_menu__right_link" href="/subcategories/волосся/маски">
+                        Маски
+                      </Link>
                     </li>
                   </motion.ul>
                 )}

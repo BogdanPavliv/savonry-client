@@ -56,8 +56,8 @@ const Footer = () => {
           <div className="footer__bottom">
             <p className="footer__copyright">Copyright @ 2025 Savonry</p>
             <div className="footer__payment_img_wrapper">
-              <Image src="/img/footer/mastercard.svg" alt="mastercard" />
-              <Image src="/img/footer/visa.svg" alt="visa" />
+              <Image src="/img/footer/mastercard.svg" alt="mastercard" width={42} height={25} />
+              <Image src="/img/footer/visa.svg" alt="visa" width={44} height={13} />
             </div>
           </div>
         </div>
